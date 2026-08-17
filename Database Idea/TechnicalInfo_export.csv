@@ -1,0 +1,3 @@
+"platform_technical","sim_imsi","network_notes","isp","site_id","dvr_nvr_details","sim_number","ip_address","camera_analytics","router_details","id","created_date","updated_date","created_by_id","is_sample"
+"","","Dedicated VLAN for CCTV","Vodacom Business","6a6b4e5c9a0d2440b053f4ed","Hikvision DS-7716NI-K4","8991101200003456789","10.10.1.20","","MikroTik hAP ac2","6a6b4e5d02588c7123256633","2026-07-30T13:15:09.436000","2026-07-30T13:15:09.436000","service_125001d9-fbcb-40ba-9347-c23bb353c9cb","false"
+"","","","Seacom","6a6b4e5c9a0d2440b053f4ee","Dahua DSS-4000","","196.21.x.x","","Ubiquiti UDM-Pro","6a6b4e5d02588c7123256634","2026-07-30T13:15:09.436000","2026-07-30T13:15:09.437000","service_125001d9-fbcb-40ba-9347-c23bb353c9cb","false"

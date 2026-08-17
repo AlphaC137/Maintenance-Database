@@ -1,0 +1,1 @@
+{"name":"AuditLog","type":"object","properties":{"user_email":{"type":"string"},"entity_type":{"type":"string"},"entity_id":{"type":"string"},"entity_name":{"type":"string"},"action":{"type":"string"},"description":{"type":"string"},"old_value":{"type":"string"},"new_value":{"type":"string"},"source_created_date":{"type":"string","format":"date-time"}},"required":["action"]}

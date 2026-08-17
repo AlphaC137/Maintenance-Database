@@ -1,0 +1,31 @@
+{
+  "name": "Site",
+  "type": "object",
+  "properties": {
+    "site_name": { "type": "string" },
+    "site_code": { "type": "string" },
+    "platform_id": { "type": "string" },
+    "site_status": { "type": "string", "enum": ["Active", "Offline", "Archived"], "default": "Active" },
+    "monitoring_schedule": { "type": "string", "enum": ["24/7", "12/7"], "default": "24/7" },
+    "client_company": { "type": "string" },
+    "primary_contact": { "type": "string" },
+    "secondary_contact": { "type": "string" },
+    "contact_telephone": { "type": "string" },
+    "contact_email": { "type": "string" },
+    "after_hours_contact": { "type": "string" },
+    "site_manager": { "type": "string" },
+    "physical_address": { "type": "string" },
+    "gps_coordinates": { "type": "string" },
+    "province": { "type": "string" },
+    "region": { "type": "string" },
+    "channel_count": { "type": "number" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" },
+    "sop_notes": { "type": "string" },
+    "is_favorite": { "type": "boolean", "default": false },
+    "last_service_date": { "type": "string" },
+    "next_service_due": { "type": "string" },
+    "maintenance_interval_months": { "type": "number", "default": 3 }
+  },
+  "required": ["site_name"]
+}

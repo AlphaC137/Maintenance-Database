@@ -1,0 +1,1 @@
+{"name":"SecurityInfo","type":"object","properties":{"site_id":{"type":"string"},"armed_response_company":{"type":"string"},"armed_response_contact":{"type":"string"},"site_supervisor":{"type":"string"},"guarding_company":{"type":"string"},"guard_contact_number":{"type":"string"},"access_procedure":{"type":"string"},"emergency_contacts":{"type":"string"}},"required":["site_id"]}

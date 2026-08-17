@@ -1,0 +1,165 @@
+{
+  "source": "Database Idea/*.csv exports",
+  "description": "Maintenance monitoring database — entity structure for Base44 backend",
+  "entities": {
+    "Platform": {
+      "description": "Monitoring platform / vendor grouping (e.g. DSS, Lytehouse, P2P)",
+      "fields": {
+        "name": { "type": "string", "required": true },
+        "description": { "type": "string" },
+        "is_default": { "type": "boolean", "default": false },
+        "color": { "type": "string", "example": "#3b82f6" },
+        "status": { "type": "enum", "values": ["Active", "Archived"] },
+        "parent_platform_id": { "type": "string", "ref": "Platform", "note": "Used in app for sub-groups; optional" }
+      },
+      "relationships": {
+        "hasMany": ["Site"],
+        "selfReferential": "parent_platform_id → Platform"
+      }
+    },
+    "Site": {
+      "description": "Monitored location — central entity; ~500+ records in export",
+      "fields": {
+        "site_name": { "type": "string", "required": true },
+        "site_code": { "type": "string" },
+        "platform_id": { "type": "string", "ref": "Platform", "required": true },
+        "site_status": { "type": "enum", "values": ["Active", "Offline", "Archived"] },
+        "monitoring_schedule": { "type": "enum", "values": ["24/7", "12/7"] },
+        "client_company": { "type": "string" },
+        "primary_contact": { "type": "string" },
+        "secondary_contact": { "type": "string" },
+        "contact_telephone": { "type": "string" },
+        "contact_email": { "type": "string" },
+        "after_hours_contact": { "type": "string" },
+        "site_manager": { "type": "string" },
+        "physical_address": { "type": "string" },
+        "gps_coordinates": { "type": "string" },
+        "province": { "type": "string" },
+        "region": { "type": "string" },
+        "channel_count": { "type": "number", "note": "Legacy camera count" },
+        "tags": { "type": "array", "items": "string" },
+        "notes": { "type": "string" },
+        "sop_notes": { "type": "string" },
+        "is_favorite": { "type": "boolean", "default": false }
+      },
+      "relationships": {
+        "belongsTo": ["Platform"],
+        "hasMany": ["Camera", "Document", "SecurityInfo", "TechnicalInfo"]
+      }
+    },
+    "Camera": {
+      "description": "Individual camera at a site",
+      "fields": {
+        "site_id": { "type": "string", "ref": "Site", "required": true },
+        "camera_name": { "type": "string", "required": true },
+        "camera_number": { "type": "number" },
+        "camera_type": { "type": "enum", "values": ["Dome", "Bullet", "PTZ", "Covert", "ANPR", "Box", "Other"] },
+        "camera_status": { "type": "enum", "values": ["Active", "Offline", "Faulty", "Maintenance"] },
+        "location": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "relationships": {
+        "belongsTo": ["Site"]
+      }
+    },
+    "SecurityInfo": {
+      "description": "Security / guarding details — one record per site (1:1)",
+      "fields": {
+        "site_id": { "type": "string", "ref": "Site", "required": true },
+        "armed_response_company": { "type": "string" },
+        "armed_response_contact": { "type": "string" },
+        "site_supervisor": { "type": "string" },
+        "guarding_company": { "type": "string" },
+        "guard_contact_number": { "type": "string" },
+        "access_procedure": { "type": "string" },
+        "emergency_contacts": { "type": "string" }
+      },
+      "relationships": {
+        "belongsTo": ["Site"]
+      }
+    },
+    "TechnicalInfo": {
+      "description": "Network / hardware details — one record per site (1:1)",
+      "fields": {
+        "site_id": { "type": "string", "ref": "Site", "required": true },
+        "dvr_nvr_details": { "type": "string" },
+        "platform_technical": { "type": "string" },
+        "ip_address": { "type": "string" },
+        "isp": { "type": "string" },
+        "sim_number": { "type": "string" },
+        "sim_imsi": { "type": "string" },
+        "router_details": { "type": "string" },
+        "network_notes": { "type": "string" },
+        "camera_analytics": { "type": "string" }
+      },
+      "relationships": {
+        "belongsTo": ["Site"]
+      }
+    },
+    "Document": {
+      "description": "Files attached to a site (SOPs, etc.)",
+      "fields": {
+        "site_id": { "type": "string", "ref": "Site", "required": true },
+        "file_name": { "type": "string", "required": true },
+        "file_url": { "type": "string", "required": true },
+        "file_type": { "type": "enum", "values": ["SOP", "Other"] },
+        "file_size": { "type": "number" },
+        "version": { "type": "string", "example": "1.0" },
+        "description": { "type": "string" }
+      },
+      "relationships": {
+        "belongsTo": ["Site"]
+      }
+    },
+    "Client": {
+      "description": "Standalone client company record (export exists; app currently embeds client fields on Site instead)",
+      "fields": {
+        "company_name": { "type": "string", "required": true },
+        "primary_contact_name": { "type": "string" },
+        "primary_contact_email": { "type": "string" },
+        "primary_contact_phone": { "type": "string" },
+        "secondary_contact_name": { "type": "string" },
+        "secondary_contact_phone": { "type": "string" },
+        "after_hours_contact": { "type": "string" },
+        "site_manager_name": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "relationships": {
+        "note": "Not linked via foreign key in export; consider client_id on Site if normalizing"
+      }
+    },
+    "AuditLog": {
+      "description": "Immutable activity trail for all entity changes",
+      "fields": {
+        "user_email": { "type": "string" },
+        "entity_type": { "type": "string", "examples": ["Site", "Platform", "Camera", "Document", "SecurityInfo", "TechnicalInfo"] },
+        "entity_id": { "type": "string" },
+        "entity_name": { "type": "string" },
+        "action": { "type": "string", "examples": ["site_created", "site_edited", "site_archived", "platform_created", "document_uploaded", "camera_added"] },
+        "description": { "type": "string" },
+        "old_value": { "type": "object" },
+        "new_value": { "type": "object" }
+      }
+    },
+    "Notification": {
+      "description": "In-app notifications for users",
+      "fields": {
+        "title": { "type": "string", "required": true },
+        "message": { "type": "string", "required": true },
+        "type": { "type": "string", "examples": ["site_added", "platform_created"] },
+        "related_entity_id": { "type": "string" },
+        "is_read": { "type": "boolean", "default": false }
+      }
+    },
+    "User": {
+      "description": "App users with roles",
+      "fields": {
+        "role": { "type": "enum", "values": ["admin", "maintenance", "readonly"] }
+      }
+    }
+  },
+  "systemFields": {
+    "note": "Present on all Base44 entities",
+    "fields": ["id", "created_date", "updated_date", "created_by_id", "is_sample"]
+  }
+}

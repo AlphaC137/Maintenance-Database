@@ -1,0 +1,8 @@
+"name","description","is_default","color","status","id","created_date","updated_date","created_by_id","is_sample"
+"Lytehouse","Lytehouse monitoring platform","false","#f59e0b","Active","6a6b52112243d2e46b07201b","2026-07-30T13:30:57.160000","2026-07-30T13:30:57.160000","service_92a37121-6ef7-4fef-ab7b-b3be9c368479","false"
+"DSS","DSS monitoring platform","true","#3b82f6","Active","6a6b52112243d2e46b072019","2026-07-30T13:30:57.160000","2026-07-30T13:30:57.160000","service_92a37121-6ef7-4fef-ab7b-b3be9c368479","false"
+"P2P","P2P monitoring platform","false","#8b5cf6","Active","6a6b52112243d2e46b07201d","2026-07-30T13:30:57.160000","2026-08-03T15:49:33.469000","service_92a37121-6ef7-4fef-ab7b-b3be9c368479","false"
+"DeepAlert","DeepAlert monitoring platform","false","#10b981","Active","6a6b52112243d2e46b07201a","2026-07-30T13:30:57.160000","2026-07-30T13:30:57.160000","service_92a37121-6ef7-4fef-ab7b-b3be9c368479","false"
+"Non-Monitored (DSS)","Non-Monitored sites on DSS","false","#6b7280","Active","6a6b52112243d2e46b07201f","2026-07-30T13:30:57.160000","2026-07-30T13:30:57.160000","service_92a37121-6ef7-4fef-ab7b-b3be9c368479","false"
+"KPI","KPI monitoring platform","false","#ef4444","Active","6a6b52112243d2e46b07201c","2026-07-30T13:30:57.160000","2026-07-30T13:30:57.160000","service_92a37121-6ef7-4fef-ab7b-b3be9c368479","false"
+"Fall Over (DSS)","Fall Over sites on DSS","false","#f97316","Active","6a6b52112243d2e46b07201e","2026-07-30T13:30:57.160000","2026-07-30T13:30:57.160000","service_92a37121-6ef7-4fef-ab7b-b3be9c368479","false"

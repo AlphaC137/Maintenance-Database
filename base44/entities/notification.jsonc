@@ -1,0 +1,1 @@
+{"name":"Notification","type":"object","properties":{"title":{"type":"string"},"message":{"type":"string"},"type":{"type":"string"},"related_entity_id":{"type":"string"},"is_read":{"type":"boolean","default":false},"source_created_date":{"type":"string","format":"date-time"}},"required":["title","message"]}

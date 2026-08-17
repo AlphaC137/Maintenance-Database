@@ -1,0 +1,1 @@
+{"name":"Document","type":"object","properties":{"site_id":{"type":"string"},"file_name":{"type":"string"},"file_url":{"type":"string"},"file_type":{"type":"string","enum":["SOP","Other"],"default":"Other"},"file_size":{"type":"number"},"version":{"type":"string"},"description":{"type":"string"}},"required":["site_id","file_name","file_url"]}

@@ -1,0 +1,5 @@
+"is_read","related_entity_id","title","message","type","id","created_date","updated_date","created_by_id","is_sample"
+"false","6a749630444c2253bf8a17ae","New site added","""Fairprice Newtown"" was added to the database.","site_added","6a7496319bed5beb35a6e58a","2026-08-06T14:12:01.512000","2026-08-06T14:12:01.512000","6a6b4d670139b3351c681e4a","false"
+"false","6a731c52746a2f29cf7155b1","New site added","""Cargo Care"" was added to the database.","site_added","6a731c5395a8b8bd3a0d1905","2026-08-05T11:19:47.791000","2026-08-05T11:19:47.791000","6a6b4d670139b3351c681e4a","false"
+"false","","New site added","""Menlyn Park Shopping Centre"" was added to the database.","site_added","6a6b4e5d44ac11e748cd267f","2026-07-30T13:15:09.657000","2026-07-30T13:15:09.657000","service_125001d9-fbcb-40ba-9347-c23bb353c9cb","false"
+"false","","Platform created","Platform ""Avigilon"" was created.","platform_created","6a6b4e5d44ac11e748cd2680","2026-07-30T13:15:09.657000","2026-07-30T13:15:09.657000","service_125001d9-fbcb-40ba-9347-c23bb353c9cb","false"
