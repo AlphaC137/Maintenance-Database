@@ -98,11 +98,6 @@ export default function Settings() {
   };
 
   const deleteUserAccount = async (member) => {
-    if (member.role === 'super_admin' || member.email === 'slebeloane@stallion.co.za') {
-      alert("The Super Admin account cannot be deleted.");
-      return;
-    }
-
     if (!confirm(`Permanently delete account for "${member.full_name || member.email}"? This action cannot be undone.`)) {
       return;
     }
@@ -112,7 +107,7 @@ export default function Settings() {
     setPendingUsers((prev) => prev.filter((u) => u.id !== member.id));
 
     try {
-      await base44.entities.User.delete(member.id);
+      await base44.auth.deleteUser(member.id);
     } catch (err) {
       console.error("Failed to delete user:", err);
       alert("Failed to delete user from server: " + err.message);

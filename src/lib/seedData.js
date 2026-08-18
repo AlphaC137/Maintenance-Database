@@ -14779,7 +14779,10 @@ export const initialSeedData = {
       "email": "admin@cctvmaintenance.com",
       "full_name": "Administrator",
       "role": "admin",
-      "created_date": "2026-08-17T04:15:03.732Z"
+      "status": "active",
+      "password_hash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+      "created_date": "2026-08-17T04:15:03.732Z",
+      "updated_date": "2026-08-17T04:15:03.732Z"
     }
   ]
 };

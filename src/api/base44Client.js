@@ -331,6 +331,8 @@ const entitiesProxy = new Proxy(entities, {
 });
 
 // Current User Helpers
+const DEFAULT_USER = null;
+
 function getCurrentUser() {
   try {
     const stored = localStorage.getItem(CURRENT_USER_KEY);
@@ -457,6 +459,20 @@ export const base44 = {
         payload.password_hash = await hashPassword(password.trim());
       }
       return await entitiesProxy.User.update(id, payload);
+    },
+
+    async deleteUser(id) {
+      // Prevent deletion of super admin
+      let user = null;
+      try {
+        user = await entitiesProxy.User.get(id);
+      } catch (e) {
+        // ignore if user not found
+      }
+      if (user && (user.role === 'super_admin' || user.email === SUPER_ADMIN_EMAIL)) {
+        throw { status: 403, message: 'The Super Admin account cannot be deleted.' };
+      }
+      return await entitiesProxy.User.delete(id);
     },
 
     async register({ email, password, full_name }) {
