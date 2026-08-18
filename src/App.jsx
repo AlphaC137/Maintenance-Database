@@ -16,6 +16,8 @@ import Reports from '@/pages/Reports';
 import AuditLogPage from '@/pages/AuditLogPage';
 import SettingsPage from '@/pages/Settings';
 import Clients from '@/pages/Clients';
+import Login from '@/pages/Login';
+import Register from '@/pages/Register';
 import ProtectedRoute from '@/components/ProtectedRoute';
 
 const AuthenticatedApp = () => {
@@ -47,13 +49,12 @@ const AuthenticatedApp = () => {
   // Render the main app
   return (
     <Routes>
-      <Route element={
-        <ProtectedRoute unauthenticatedElement={
-          <div className="fixed inset-0 flex items-center justify-center">
-            <p className="text-sm text-muted-foreground">Redirecting to login…</p>
-          </div>
-        } />
-      }>
+      {/* Public routes */}
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+
+      {/* Protected routes */}
+      <Route element={<ProtectedRoute />}>
         <Route element={<Layout />}>
           <Route path="/" element={<Dashboard />} />
           <Route path="/sites" element={<Sites />} />

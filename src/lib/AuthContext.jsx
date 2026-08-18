@@ -7,9 +7,10 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoadingAuth, setIsLoadingAuth] = useState(true);
-  const [isLoadingPublicSettings, setIsLoadingPublicSettings] = useState(false);
+  const [isLoadingPublicSettings] = useState(false);
   const [authError, setAuthError] = useState(null);
   const [authChecked, setAuthChecked] = useState(false);
+  const [pendingApproval, setPendingApproval] = useState(false);
   const [appPublicSettings] = useState({ id: 'local_app', public_settings: {} });
 
   useEffect(() => {
@@ -23,6 +24,7 @@ export const AuthProvider = ({ children }) => {
       setUser(currentUser);
       setIsAuthenticated(true);
       setAuthError(null);
+      setPendingApproval(false);
     } catch (error) {
       setUser(null);
       setIsAuthenticated(false);
@@ -30,6 +32,22 @@ export const AuthProvider = ({ children }) => {
       setIsLoadingAuth(false);
       setAuthChecked(true);
     }
+  };
+
+  const login = async (email, password) => {
+    const loggedInUser = await base44.auth.loginViaEmailPassword(email, password);
+    setUser(loggedInUser);
+    setIsAuthenticated(true);
+    setPendingApproval(false);
+    return loggedInUser;
+  };
+
+  const register = async (email, password, fullName) => {
+    const result = await base44.auth.register({ email, password, full_name: fullName });
+    if (result?.pending) {
+      setPendingApproval(true);
+    }
+    return result;
   };
 
   const checkAppState = async () => {
@@ -40,22 +58,25 @@ export const AuthProvider = ({ children }) => {
     base44.auth.logout(shouldRedirect ? window.location.origin : null);
     setUser(null);
     setIsAuthenticated(false);
+    setPendingApproval(false);
   };
 
   const navigateToLogin = () => {
-    // Local fallback login
     checkUserAuth();
   };
 
   return (
-    <AuthContext.Provider value={{ 
-      user, 
-      isAuthenticated, 
+    <AuthContext.Provider value={{
+      user,
+      isAuthenticated,
       isLoadingAuth,
       isLoadingPublicSettings,
       authError,
       appPublicSettings,
       authChecked,
+      pendingApproval,
+      login,
+      register,
       logout,
       navigateToLogin,
       checkUserAuth,

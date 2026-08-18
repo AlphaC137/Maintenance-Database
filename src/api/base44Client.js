@@ -3,13 +3,25 @@ import { initialSeedData } from '@/lib/seedData';
 const STORAGE_KEY = 'cctv_maintenance_local_db_v1';
 const CURRENT_USER_KEY = 'cctv_maintenance_current_user_v1';
 
-// Default Admin User
-const DEFAULT_USER = {
-  id: 'usr_admin',
-  email: 'admin@cctvmaintenance.com',
-  full_name: 'Administrator',
-  role: 'admin'
+// Super admin credentials — password is SHA-256 of 'Stallion_2550'
+const SUPER_ADMIN_EMAIL = 'slebeloane@stallion.co.za';
+const SUPER_ADMIN_HASH = '5063d4f4a3c6d2336b0ce8197542a9012e24c985c8c03dce804e66f8fbf411ed';
+const SUPER_ADMIN_USER = {
+  id: 'usr_super_admin',
+  email: SUPER_ADMIN_EMAIL,
+  full_name: 'Siyabonga Lebeloane',
+  role: 'super_admin',
+  status: 'active'
 };
+
+// Hash a password string with SHA-256 using Web Crypto API
+async function hashPassword(password) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
+}
 
 function loadStore() {
   try {
@@ -316,48 +328,93 @@ export const base44 = {
       }
       return user;
     },
+
     async loginViaEmailPassword(email, password) {
-      const user = {
-        id: 'usr_' + Math.random().toString(36).substr(2, 6),
-        email,
-        full_name: email.split('@')[0],
-        role: 'admin'
+      const emailLower = email.trim().toLowerCase();
+      const hash = await hashPassword(password);
+
+      // Super admin shortcut
+      if (emailLower === SUPER_ADMIN_EMAIL && hash === SUPER_ADMIN_HASH) {
+        setCurrentUser(SUPER_ADMIN_USER);
+        return SUPER_ADMIN_USER;
+      }
+
+      // Look up user in the store
+      const users = db['User'] || [];
+      const found = users.find((u) => u.email?.toLowerCase() === emailLower);
+
+      if (!found) {
+        throw { status: 401, message: 'No account found with this email address.' };
+      }
+      if (found.password_hash !== hash) {
+        throw { status: 401, message: 'Incorrect password.' };
+      }
+      if (found.status === 'pending') {
+        throw { status: 403, message: 'Your account is pending approval by the administrator.' };
+      }
+      if (found.status === 'rejected') {
+        throw { status: 403, message: 'Your account access has been denied. Contact slebeloane@stallion.co.za.' };
+      }
+
+      const sessionUser = {
+        id: found.id,
+        email: found.email,
+        full_name: found.full_name || found.email.split('@')[0],
+        role: found.role || 'readonly',
+        status: found.status
       };
-      setCurrentUser(user);
-      return user;
+      setCurrentUser(sessionUser);
+      return sessionUser;
     },
+
+    async register({ email, password, full_name }) {
+      const emailLower = email.trim().toLowerCase();
+
+      // Block re-registering as super admin
+      if (emailLower === SUPER_ADMIN_EMAIL) {
+        throw { status: 400, message: 'This email address cannot be used for registration.' };
+      }
+
+      const users = db['User'] || [];
+      const existing = users.find((u) => u.email?.toLowerCase() === emailLower);
+      if (existing) {
+        throw { status: 400, message: 'An account with this email already exists.' };
+      }
+
+      const hash = await hashPassword(password);
+      const now = new Date().toISOString();
+      const newUser = {
+        id: 'usr_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now().toString(36),
+        email: emailLower,
+        full_name: full_name || emailLower.split('@')[0],
+        role: 'readonly',
+        status: 'pending',
+        password_hash: hash,
+        created_date: now,
+        updated_date: now
+      };
+
+      if (!db['User']) db['User'] = [];
+      db['User'].push(newUser);
+      saveStore(db);
+
+      // Do NOT set current user — they must be approved first
+      return { pending: true, email: emailLower };
+    },
+
     logout(redirectUrl) {
       setCurrentUser(null);
       if (redirectUrl) {
         window.location.href = redirectUrl;
       }
     },
-    async resetPassword() {
-      return { success: true };
-    },
-    async resetPasswordRequest() {
-      return { success: true };
-    },
-    async register({ email }) {
-      const user = {
-        id: 'usr_' + Math.random().toString(36).substr(2, 6),
-        email,
-        full_name: email.split('@')[0],
-        role: 'admin'
-      };
-      setCurrentUser(user);
-      return user;
-    },
-    async verifyOtp() {
-      return { access_token: 'local_mock_token' };
-    },
+
+    async resetPassword() { return { success: true }; },
+    async resetPasswordRequest() { return { success: true }; },
+    async verifyOtp() { return { access_token: 'local_mock_token' }; },
     setToken() {},
-    async resendOtp() {
-      return { success: true };
-    },
-    loginWithProvider() {
-      setCurrentUser(DEFAULT_USER);
-    },
+    async resendOtp() { return { success: true }; },
+    loginWithProvider() {},
     redirectToLogin() {}
   },
 
