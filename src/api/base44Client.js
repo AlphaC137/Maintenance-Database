@@ -52,11 +52,20 @@ function generateId(prefix = 'id') {
   return `${prefix}_${Math.random().toString(36).substr(2, 9)}_${Date.now().toString(36)}`;
 }
 
+const DEFAULT_PROD_API_URL = 'https://maintenance-database-1coa.onrender.com/api';
+
 const getApiUrl = () => {
   if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_URL) {
     return import.meta.env.VITE_API_URL.replace(/\/$/, '');
   }
-  return null;
+  // Default to live Render backend in production / browser environment
+  if (typeof window !== 'undefined' && window.location) {
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      return 'http://localhost:5000/api';
+    }
+    return DEFAULT_PROD_API_URL;
+  }
+  return DEFAULT_PROD_API_URL;
 };
 
 // Entity Factory to emulate base44.entities.[EntityName]
@@ -357,6 +366,9 @@ export const base44 = {
       if (found.status === 'pending') {
         throw { status: 403, message: 'Your account is pending approval by the administrator.' };
       }
+      if (found.status === 'disabled' || found.status === 'deactivated') {
+        throw { status: 403, message: 'Your account has been disabled. Please contact slebeloane@stallion.co.za.' };
+      }
       if (found.status === 'rejected') {
         throw { status: 403, message: 'Your account access has been denied. Contact slebeloane@stallion.co.za.' };
       }
@@ -366,10 +378,49 @@ export const base44 = {
         email: found.email,
         full_name: found.full_name || found.email.split('@')[0],
         role: found.role || 'readonly',
-        status: found.status
+        status: found.status || 'active'
       };
       setCurrentUser(sessionUser);
       return sessionUser;
+    },
+
+    async createUser({ email, password, full_name, role = 'readonly', status = 'active' }) {
+      const emailLower = email.trim().toLowerCase();
+      if (emailLower === SUPER_ADMIN_EMAIL) {
+        throw { status: 400, message: 'This email is reserved for the Super Admin.' };
+      }
+      let users = [];
+      try {
+        users = await entitiesProxy.User.list();
+      } catch (e) {
+        users = db['User'] || [];
+      }
+      const existing = users.find((u) => u.email?.toLowerCase() === emailLower);
+      if (existing) {
+        throw { status: 400, message: 'An account with this email already exists.' };
+      }
+
+      const hash = await hashPassword(password);
+      const now = new Date().toISOString();
+      const newUser = {
+        id: 'usr_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now().toString(36),
+        email: emailLower,
+        full_name: full_name || emailLower.split('@')[0],
+        role: role || 'readonly',
+        status: status || 'active',
+        password_hash: hash,
+        created_date: now,
+        updated_date: now
+      };
+
+      try {
+        return await entitiesProxy.User.create(newUser);
+      } catch (e) {
+        if (!db['User']) db['User'] = [];
+        db['User'].push(newUser);
+        saveStore(db);
+        return newUser;
+      }
     },
 
     async register({ email, password, full_name }) {
