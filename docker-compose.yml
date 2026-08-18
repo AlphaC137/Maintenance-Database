@@ -3,8 +3,8 @@ version: '3.8'
 services:
   cctv_backend:
     build:
-      context: .
-      dockerfile: server/Dockerfile
+      context: ./server
+      dockerfile: Dockerfile
     container_name: cctv_maintenance_api
     ports:
       - "5000:5000"

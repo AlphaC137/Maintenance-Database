@@ -2,10 +2,10 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY server/package.json ./
+COPY package.json ./
 RUN npm install --production
 
-COPY server/ ./
+COPY . ./
 
 EXPOSE 5000
 
@@ -13,3 +13,4 @@ ENV PORT=5000
 ENV NODE_ENV=production
 
 CMD ["node", "index.js"]
+

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Plus, Pencil, Archive, RotateCcw, Server, ArrowRightLeft, MapPin, Cctv } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";

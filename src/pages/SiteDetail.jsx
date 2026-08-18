@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Pencil, Plus, Trash2, Search, Download, Upload, FileText, MapPin, Star, FileCheck, Calendar } from "lucide-react";
+import { ArrowLeft, Pencil, Plus, Trash2, Search, Download, Upload, FileText, Star, FileCheck } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";

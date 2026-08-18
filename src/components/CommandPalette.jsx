@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Command } from "cmdk";
-import { Search, MapPin, Server, Users, LayoutDashboard, FileText, Settings, ShieldAlert, Plus, ExternalLink } from "lucide-react";
+import { Search, MapPin, Server, Users, LayoutDashboard, FileText, ShieldAlert } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 
 export default function CommandPalette({ open, onOpenChange }) {
