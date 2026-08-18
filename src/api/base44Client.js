@@ -339,8 +339,13 @@ export const base44 = {
         return SUPER_ADMIN_USER;
       }
 
-      // Look up user in the store
-      const users = db['User'] || [];
+      // Look up user in the store / API
+      let users = [];
+      try {
+        users = await entitiesProxy.User.list();
+      } catch (e) {
+        users = db['User'] || [];
+      }
       const found = users.find((u) => u.email?.toLowerCase() === emailLower);
 
       if (!found) {
@@ -375,7 +380,13 @@ export const base44 = {
         throw { status: 400, message: 'This email address cannot be used for registration.' };
       }
 
-      const users = db['User'] || [];
+      let users = [];
+      try {
+        users = await entitiesProxy.User.list();
+      } catch (e) {
+        users = db['User'] || [];
+      }
+
       const existing = users.find((u) => u.email?.toLowerCase() === emailLower);
       if (existing) {
         throw { status: 400, message: 'An account with this email already exists.' };
@@ -394,9 +405,13 @@ export const base44 = {
         updated_date: now
       };
 
-      if (!db['User']) db['User'] = [];
-      db['User'].push(newUser);
-      saveStore(db);
+      try {
+        await entitiesProxy.User.create(newUser);
+      } catch (e) {
+        if (!db['User']) db['User'] = [];
+        db['User'].push(newUser);
+        saveStore(db);
+      }
 
       // Do NOT set current user — they must be approved first
       return { pending: true, email: emailLower };

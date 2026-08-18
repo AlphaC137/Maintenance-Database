@@ -5,9 +5,11 @@ import { Menu, Search, Bell, Sun, Moon, User as UserIcon, LogOut } from "lucide-
 import { base44 } from "@/api/base44Client";
 import { cn } from "@/lib/utils";
 import { ROLE_LABELS } from "@/lib/roles";
+import { useAuth } from "@/lib/AuthContext";
 
 export default function Topbar({ user, onMenu, onOpenCommandPalette }) {
   const { theme, setTheme } = useTheme();
+  const { logout } = useAuth();
   const navigate = useNavigate();
   const [notifOpen, setNotifOpen] = useState(false);
   const [userOpen, setUserOpen] = useState(false);
@@ -99,7 +101,7 @@ export default function Topbar({ user, onMenu, onOpenCommandPalette }) {
                 <UserIcon className="h-4 w-4" /> Settings
               </button>
               <button
-                onClick={() => base44.auth.logout()}
+                onClick={() => logout(true)}
                 className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-destructive hover:bg-destructive/10"
               >
                 <LogOut className="h-4 w-4" /> Sign out
