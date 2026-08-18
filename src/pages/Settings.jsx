@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { 
   Moon, Sun, Users, Database, Download, Shield, FolderInput, 
   CheckCircle2, CircleAlert, Clock, UserCheck, UserX, UserPlus, 
-  Trash2, Ban, CheckCircle, Search
+  Trash2, Ban, CheckCircle, Search, Pencil, RefreshCw, Key
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { base44 } from "@/api/base44Client";
@@ -24,6 +24,7 @@ export default function Settings() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
+  const [editingUser, setEditingUser] = useState(null);
   const [bulkImporting, setBulkImporting] = useState(false);
   const [bulkMessage, setBulkMessage] = useState("");
   const [bulkResult, setBulkResult] = useState(null);
@@ -35,8 +36,8 @@ export default function Settings() {
       const allUsers = await base44.entities.User.list();
       setPendingUsers(allUsers.filter((u) => u.status === 'pending'));
       setUsers(allUsers.filter((u) => u.status !== 'pending'));
-    } catch {
-      /* restricted */
+    } catch (e) {
+      console.error("Failed to load users:", e);
     } finally {
       setLoading(false);
     }
@@ -45,16 +46,33 @@ export default function Settings() {
   useEffect(() => { loadUsers(); }, [loadUsers]);
 
   const approveUser = async (member) => {
-    await base44.entities.User.update(member.id, { 
-      status: 'active', 
-      role: member.role || 'readonly' 
-    });
+    // Optimistic UI update
+    setPendingUsers((prev) => prev.filter((u) => u.id !== member.id));
+    setUsers((prev) => [{ ...member, status: 'active', role: member.role || 'readonly' }, ...prev]);
+    
+    try {
+      await base44.entities.User.update(member.id, { 
+        status: 'active', 
+        role: member.role || 'readonly' 
+      });
+    } catch (err) {
+      console.error("Failed to approve user:", err);
+      alert("Failed to approve user on server: " + err.message);
+    }
     loadUsers();
   };
 
   const rejectUser = async (member) => {
     if (!confirm(`Reject access request for "${member.email}"?`)) return;
-    await base44.entities.User.delete(member.id);
+    
+    // Optimistic UI update
+    setPendingUsers((prev) => prev.filter((u) => u.id !== member.id));
+    
+    try {
+      await base44.entities.User.delete(member.id);
+    } catch (err) {
+      console.error("Failed to reject user:", err);
+    }
     loadUsers();
   };
 
@@ -67,7 +85,15 @@ export default function Settings() {
       return;
     }
 
-    await base44.entities.User.update(member.id, { status: newStatus });
+    // Optimistic update
+    setUsers((prev) => prev.map((u) => u.id === member.id ? { ...u, status: newStatus } : u));
+
+    try {
+      await base44.entities.User.update(member.id, { status: newStatus });
+    } catch (err) {
+      console.error("Failed to update status:", err);
+      alert("Failed to update status on server: " + err.message);
+    }
     loadUsers();
   };
 
@@ -81,7 +107,16 @@ export default function Settings() {
       return;
     }
 
-    await base44.entities.User.delete(member.id);
+    // Optimistic UI removal
+    setUsers((prev) => prev.filter((u) => u.id !== member.id));
+    setPendingUsers((prev) => prev.filter((u) => u.id !== member.id));
+
+    try {
+      await base44.entities.User.delete(member.id);
+    } catch (err) {
+      console.error("Failed to delete user:", err);
+      alert("Failed to delete user from server: " + err.message);
+    }
     loadUsers();
   };
 
@@ -204,8 +239,8 @@ export default function Settings() {
             title={`Pending Approvals${pendingUsers.length > 0 ? ` (${pendingUsers.length})` : ""}`}
             icon={<Clock className="h-4 w-4 text-amber-500" />}
             action={
-              <Button size="sm" variant="ghost" onClick={loadUsers} className="text-xs">
-                Refresh
+              <Button size="sm" variant="ghost" onClick={loadUsers} className="text-xs gap-1">
+                <RefreshCw className="h-3 w-3" /> Refresh
               </Button>
             }
           >
@@ -335,6 +370,8 @@ export default function Settings() {
                                   <Select
                                     value={member.role || 'readonly'}
                                     onValueChange={async (role) => {
+                                      // Optimistic role change
+                                      setUsers((prev) => prev.map((u) => u.id === member.id ? { ...u, role } : u));
                                       await base44.entities.User.update(member.id, { role });
                                       loadUsers();
                                     }}
@@ -371,6 +408,18 @@ export default function Settings() {
                                 <td className="px-4 py-3 text-right">
                                   {!isSuperAdminAccount ? (
                                     <div className="flex items-center justify-end gap-1.5">
+                                      {/* Edit Details Button */}
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        onClick={() => setEditingUser(member)}
+                                        className="h-7 px-2 text-xs gap-1"
+                                        title="Edit user details and password"
+                                      >
+                                        <Pencil className="h-3 w-3" /> Edit
+                                      </Button>
+
+                                      {/* Toggle Status Button */}
                                       <Button
                                         size="sm"
                                         variant="outline"
@@ -383,12 +432,14 @@ export default function Settings() {
                                       >
                                         {isDisabled ? "Enable" : "Disable"}
                                       </Button>
+
+                                      {/* Delete Button */}
                                       <Button
                                         size="sm"
                                         variant="ghost"
                                         onClick={() => deleteUserAccount(member)}
                                         className="h-7 w-7 p-0 text-destructive hover:bg-destructive/10"
-                                        title="Delete user"
+                                        title="Permanently delete user"
                                       >
                                         <Trash2 className="h-3.5 w-3.5" />
                                       </Button>
@@ -416,6 +467,14 @@ export default function Settings() {
         open={createDialogOpen} 
         onOpenChange={setCreateDialogOpen} 
         onUserCreated={loadUsers} 
+      />
+
+      {/* Edit User Dialog */}
+      <EditUserDialog
+        user={editingUser}
+        open={!!editingUser}
+        onOpenChange={(open) => { if (!open) setEditingUser(null); }}
+        onUserSaved={loadUsers}
       />
     </div>
   );
@@ -537,6 +596,157 @@ function CreateUserDialog({ open, onOpenChange, onUserCreated }) {
             </Button>
             <Button type="submit" disabled={loading}>
               {loading ? "Creating..." : "Create User"}
+            </Button>
+          </DialogFooter>
+        </form>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+function EditUserDialog({ user: editTarget, open, onOpenChange, onUserSaved }) {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("readonly");
+  const [status, setStatus] = useState("active");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (editTarget) {
+      setFullName(editTarget.full_name || "");
+      setEmail(editTarget.email || "");
+      setRole(editTarget.role || "readonly");
+      setStatus(editTarget.status || "active");
+      setPassword("");
+      setError("");
+    }
+  }, [editTarget]);
+
+  if (!editTarget) return null;
+
+  const handleSave = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (!email || !fullName) {
+      setError("Full Name and Email are required.");
+      return;
+    }
+
+    if (password && password.length < 6) {
+      setError("New password must be at least 6 characters.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      await base44.auth.updateUser(editTarget.id, {
+        email,
+        full_name: fullName,
+        role,
+        status,
+        password: password.trim() || undefined
+      });
+
+      onOpenChange(false);
+      onUserSaved();
+    } catch (err) {
+      setError(err.message || "Failed to update user details.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle className="flex items-center gap-2">
+            <Pencil className="h-4 w-4 text-primary" /> Edit User Details
+          </DialogTitle>
+        </DialogHeader>
+
+        {error && (
+          <div className="rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-xs text-destructive">
+            {error}
+          </div>
+        )}
+
+        <form onSubmit={handleSave} className="space-y-4">
+          <div className="space-y-1.5">
+            <Label htmlFor="edit-fullname">Full Name</Label>
+            <Input 
+              id="edit-fullname"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="edit-email">Email Address</Label>
+            <Input 
+              id="edit-email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <Label htmlFor="edit-role">Role</Label>
+              <Select value={role} onValueChange={setRole}>
+                <SelectTrigger id="edit-role">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {Object.entries(ASSIGNABLE_ROLE_LABELS).map(([val, label]) => (
+                    <SelectItem key={val} value={val}>{label}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-1.5">
+              <Label htmlFor="edit-status">Status</Label>
+              <Select value={status} onValueChange={setStatus}>
+                <SelectTrigger id="edit-status">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="active">Active</SelectItem>
+                  <SelectItem value="disabled">Disabled</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+
+          <div className="space-y-1.5 border-t border-border pt-3">
+            <div className="flex items-center justify-between">
+              <Label htmlFor="edit-password" className="flex items-center gap-1">
+                <Key className="h-3.5 w-3.5 text-muted-foreground" /> Reset Password
+              </Label>
+              <span className="text-[11px] text-muted-foreground">Leave blank to keep current</span>
+            </div>
+            <Input 
+              id="edit-password"
+              type="password"
+              placeholder="New password (min 6 characters)"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          <DialogFooter className="pt-2">
+            <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
+              Cancel
+            </Button>
+            <Button type="submit" disabled={loading}>
+              {loading ? "Saving..." : "Save Changes"}
             </Button>
           </DialogFooter>
         </form>

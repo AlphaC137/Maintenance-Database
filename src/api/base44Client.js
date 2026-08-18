@@ -158,7 +158,14 @@ function createEntityHandler(entityName) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
-          if (res.ok) return await res.json();
+          if (res.ok) {
+            const created = await res.json();
+            if (!db[entityName]) db[entityName] = [];
+            db[entityName] = db[entityName].filter((item) => item.id !== created.id);
+            db[entityName].unshift(created);
+            saveStore(db);
+            return created;
+          }
         } catch (e) {
           console.warn(`Docker API create failed for ${entityName}, falling back:`, e);
         }
@@ -189,7 +196,19 @@ function createEntityHandler(entityName) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
-          if (res.ok) return await res.json();
+          if (res.ok) {
+            const updated = await res.json();
+            const items = db[entityName] || [];
+            const idx = items.findIndex((item) => item.id === id || String(item.id) === String(id));
+            if (idx !== -1) {
+              items[idx] = updated;
+            } else {
+              items.unshift(updated);
+            }
+            db[entityName] = items;
+            saveStore(db);
+            return updated;
+          }
         } catch (e) {
           console.warn(`Docker API update failed for ${entityName}, falling back:`, e);
         }
@@ -264,7 +283,12 @@ function createEntityHandler(entityName) {
           const res = await fetch(`${apiUrl}/entities/${entityName}/${id}`, {
             method: 'DELETE'
           });
-          if (res.ok) return await res.json();
+          if (res.ok) {
+            const items = db[entityName] || [];
+            db[entityName] = items.filter((item) => item.id !== id && String(item.id) !== String(id));
+            saveStore(db);
+            return await res.json();
+          }
         } catch (e) {
           console.warn(`Docker API delete failed for ${entityName}, falling back:`, e);
         }
@@ -421,6 +445,18 @@ export const base44 = {
         saveStore(db);
         return newUser;
       }
+    },
+
+    async updateUser(id, { email, full_name, role, status, password }) {
+      const payload = {};
+      if (email) payload.email = email.trim().toLowerCase();
+      if (full_name !== undefined) payload.full_name = full_name;
+      if (role) payload.role = role;
+      if (status) payload.status = status;
+      if (password && password.trim().length > 0) {
+        payload.password_hash = await hashPassword(password.trim());
+      }
+      return await entitiesProxy.User.update(id, payload);
     },
 
     async register({ email, password, full_name }) {
