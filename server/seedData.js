@@ -4240,7 +4240,6 @@ export const initialSeedData = {
     {
       "physical_address": "78 Eckstein Road, Observatory",
       "client_company": "Cargo Care",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "082 337 3484",
@@ -4268,7 +4267,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 36,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4296,7 +4294,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 20,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4324,7 +4321,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 12,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4352,7 +4348,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 41,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4380,7 +4375,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 35,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4408,7 +4402,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4436,7 +4429,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 20,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4464,7 +4456,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4492,7 +4483,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4520,7 +4510,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4548,7 +4537,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4576,7 +4564,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4604,7 +4591,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4632,7 +4618,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 9,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4660,7 +4645,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4688,7 +4672,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4716,7 +4699,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4744,7 +4726,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 13,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4799,7 +4780,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 11,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4827,7 +4807,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4855,7 +4834,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4883,7 +4861,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4911,7 +4888,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4939,7 +4915,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 4,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4967,7 +4942,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 6,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -4995,7 +4969,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5023,7 +4996,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 90,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5051,7 +5023,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5079,7 +5050,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5107,7 +5077,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5135,7 +5104,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5163,7 +5131,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 12,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5191,7 +5158,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 27,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5219,7 +5185,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 19,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5247,7 +5212,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5275,7 +5239,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5303,7 +5266,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 20,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5331,7 +5293,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 4,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5359,7 +5320,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5387,7 +5347,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 2,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5415,7 +5374,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5443,7 +5401,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5471,7 +5428,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 17,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5499,7 +5455,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 2,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5527,7 +5482,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 17,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5555,7 +5509,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 17,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5583,7 +5536,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 2,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5638,7 +5590,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 48,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5666,7 +5617,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 5, found in: DSS, DeepAlert)",
       "contact_telephone": "",
@@ -5694,7 +5644,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5722,7 +5671,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5750,7 +5698,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 30,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5778,7 +5725,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 41,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5806,7 +5752,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5834,7 +5779,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5862,7 +5806,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 30,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5890,7 +5833,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5918,7 +5860,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 8, found in: DSS, Lytehouse)",
       "contact_telephone": "",
@@ -5946,7 +5887,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -5974,7 +5914,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 11,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6002,7 +5941,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 31,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6030,7 +5968,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 31,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6058,7 +5995,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 51,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6086,7 +6022,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 6,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6114,7 +6049,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 12,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6142,7 +6076,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 17,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 3, found in: DSS, DeepAlert)",
       "contact_telephone": "",
@@ -6197,7 +6130,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 28,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6225,7 +6157,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 28,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6253,7 +6184,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 31,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6281,7 +6211,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6309,7 +6238,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 9,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6337,7 +6265,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 29,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6365,7 +6292,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 27,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6393,7 +6319,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 6,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6448,7 +6373,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6476,7 +6400,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 25,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6504,7 +6427,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 41,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6532,7 +6454,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 25,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6560,7 +6481,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6588,7 +6508,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6616,7 +6535,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6644,7 +6562,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 14,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 1, found in: DSS, DeepAlert)",
       "contact_telephone": "",
@@ -6672,7 +6589,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6700,7 +6616,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 28,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6728,7 +6643,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6756,7 +6670,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 43,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6784,7 +6697,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 9,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6812,7 +6724,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6840,7 +6751,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 2,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6868,7 +6778,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6896,7 +6805,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 14,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 7, found in: DSS, Lytehouse)",
       "contact_telephone": "",
@@ -6924,7 +6832,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6952,7 +6859,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 12,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -6980,7 +6886,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7008,7 +6913,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 29,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7036,7 +6940,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 40,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7064,7 +6967,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 45,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7092,7 +6994,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 29,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7120,7 +7021,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 19,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7148,7 +7048,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 4,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7176,7 +7075,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7204,7 +7102,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 22,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7232,7 +7129,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 4, found in: DSS, DeepAlert)",
       "contact_telephone": "",
@@ -7260,7 +7156,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7288,7 +7183,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7316,7 +7210,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7344,7 +7237,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 2,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7372,7 +7264,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7400,7 +7291,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 22,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7428,7 +7318,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 26,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7456,7 +7345,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 4,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7484,7 +7372,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7512,7 +7399,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7540,7 +7426,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7568,7 +7453,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7596,7 +7480,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7624,7 +7507,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7652,7 +7534,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 134,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7680,7 +7561,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7708,7 +7588,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7736,7 +7615,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7764,7 +7642,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 37,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7792,7 +7669,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 2,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7820,7 +7696,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7848,7 +7723,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7876,7 +7750,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7904,7 +7777,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 11,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7932,7 +7804,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7960,7 +7831,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 9,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -7988,7 +7858,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8016,7 +7885,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8044,7 +7912,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 21,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8072,7 +7939,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 6,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8100,7 +7966,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 6,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8128,7 +7993,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 6,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8156,7 +8020,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 21,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8184,7 +8047,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8212,7 +8074,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 9,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8240,7 +8101,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8268,7 +8128,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 14,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8296,7 +8155,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8324,7 +8182,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 17,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8352,7 +8209,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8380,7 +8236,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8408,7 +8263,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 9,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8436,7 +8290,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8464,7 +8317,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8492,7 +8344,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 4,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8520,7 +8371,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 4,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8548,7 +8398,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8576,7 +8425,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 6,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8604,7 +8452,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 13,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8632,7 +8479,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8660,7 +8506,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 4,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8688,7 +8533,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8716,7 +8560,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8744,7 +8587,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8772,7 +8614,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8800,7 +8641,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8828,7 +8668,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 13,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8856,7 +8695,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8884,7 +8722,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 11,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8912,7 +8749,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 13,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8940,7 +8776,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8968,7 +8803,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -8996,7 +8830,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9024,7 +8857,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 11,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9052,7 +8884,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9080,7 +8911,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9108,7 +8938,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9136,7 +8965,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9164,7 +8992,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 12,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9192,7 +9019,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 4,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9220,7 +9046,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 9,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9248,7 +9073,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 2,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9276,7 +9100,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9304,7 +9127,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 13,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9332,7 +9154,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 6,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9360,7 +9181,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9388,7 +9208,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 14,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9416,7 +9235,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 2,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9444,7 +9262,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 14,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9472,7 +9289,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9500,7 +9316,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9528,7 +9343,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 9,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9556,7 +9370,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 23,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 2, found in: DSS, DeepAlert)",
       "contact_telephone": "",
@@ -9584,7 +9397,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9612,7 +9424,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 6,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9640,7 +9451,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 13,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9668,7 +9478,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9696,7 +9505,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9724,7 +9532,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9752,7 +9559,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 4,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9780,7 +9586,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9808,7 +9613,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9836,7 +9640,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9864,7 +9667,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 2,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9892,7 +9694,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9920,7 +9721,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 2,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9948,7 +9748,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 2,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -9976,7 +9775,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10004,7 +9802,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10032,7 +9829,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 11,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10060,7 +9856,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10088,7 +9883,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10116,7 +9910,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10144,7 +9937,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 9,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10172,7 +9964,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 4,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10200,7 +9991,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10228,7 +10018,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10256,7 +10045,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10284,7 +10072,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10312,7 +10099,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 2230,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10340,7 +10126,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10368,7 +10153,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 4,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10396,7 +10180,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 4,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10424,7 +10207,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10452,7 +10234,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10480,7 +10261,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 4,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10508,7 +10288,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 2,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10536,7 +10315,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10564,7 +10342,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 9,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10592,7 +10369,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 4,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10620,7 +10396,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 6,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10648,7 +10423,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10676,7 +10450,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10704,7 +10477,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 3,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10732,7 +10504,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 4,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10760,7 +10531,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10788,7 +10558,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10816,7 +10585,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10844,7 +10612,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10872,7 +10639,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10900,7 +10666,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10928,7 +10693,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10956,7 +10720,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 1,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -10984,7 +10747,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 19,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 9, found in: DSS, P2P)",
       "contact_telephone": "",
@@ -11012,7 +10774,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11040,7 +10801,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11068,7 +10828,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 13,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11096,7 +10855,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 24,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11124,7 +10882,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11152,7 +10909,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11180,7 +10936,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11208,7 +10963,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11236,7 +10990,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11264,7 +11017,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11292,7 +11044,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 6,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11320,7 +11071,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11348,7 +11098,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11376,7 +11125,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11404,7 +11152,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11432,7 +11179,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11460,7 +11206,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11488,7 +11233,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11516,7 +11260,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11544,7 +11287,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11572,7 +11314,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11600,7 +11341,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11628,7 +11368,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 7,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11656,7 +11395,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11684,7 +11422,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11712,7 +11449,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11740,7 +11476,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 5, found in: DSS, DeepAlert)",
       "contact_telephone": "",
@@ -11768,7 +11503,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11796,7 +11530,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 5,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11824,7 +11557,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 13,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11852,7 +11584,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11880,7 +11611,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 14,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11908,7 +11638,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11936,7 +11665,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11964,7 +11692,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -11992,7 +11719,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 14,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12020,7 +11746,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 9,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12048,7 +11773,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 12,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12076,7 +11800,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 11,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12104,7 +11827,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12132,7 +11854,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12160,7 +11881,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 13,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12188,7 +11908,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12216,7 +11935,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 14,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12244,7 +11962,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12272,7 +11989,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12300,7 +12016,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12328,7 +12043,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12356,7 +12070,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12384,7 +12097,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 11,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12412,7 +12124,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 11,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12440,7 +12151,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12468,7 +12178,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 9,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12496,7 +12205,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12524,7 +12232,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12552,7 +12259,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 8,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12580,7 +12286,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12608,7 +12313,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 7, found in: DSS, Lytehouse)",
       "contact_telephone": "",
@@ -12636,7 +12340,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 13,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12664,7 +12367,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 8, found in: DSS, Lytehouse)",
       "contact_telephone": "",
@@ -12692,7 +12394,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12720,7 +12421,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 9,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12748,7 +12448,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 15,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12776,7 +12475,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 10,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12804,7 +12502,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12832,7 +12529,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 14,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12860,7 +12556,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 12,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12888,7 +12583,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 17,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12916,7 +12610,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12944,7 +12637,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -12972,7 +12664,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13000,7 +12691,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13028,7 +12718,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 20,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13056,7 +12745,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13084,7 +12772,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 20,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13112,7 +12799,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 17,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 6, found in: DSS, Lytehouse)",
       "contact_telephone": "",
@@ -13140,7 +12826,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 19,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 9, found in: DSS, P2P)",
       "contact_telephone": "",
@@ -13195,7 +12880,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 21,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13223,7 +12907,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 19,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 3, found in: DSS, DeepAlert)",
       "contact_telephone": "",
@@ -13251,7 +12934,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 21,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13279,7 +12961,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 20,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13307,7 +12988,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 17,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13335,7 +13015,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13363,7 +13042,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 24,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13391,7 +13069,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13419,7 +13096,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 24,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 2, found in: DSS, DeepAlert)",
       "contact_telephone": "",
@@ -13447,7 +13123,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13475,7 +13150,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13503,7 +13177,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 24,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13531,7 +13204,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 22,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13559,7 +13231,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 17,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13587,7 +13258,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13615,7 +13285,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13643,7 +13312,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 22,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13671,7 +13339,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13699,7 +13366,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 16,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13727,7 +13393,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 17,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13755,7 +13420,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 20,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13783,7 +13447,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 38,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13811,7 +13474,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13839,7 +13501,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13867,7 +13528,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13895,7 +13555,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 28,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13923,7 +13582,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13951,7 +13609,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 30,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -13979,7 +13636,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14007,7 +13663,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 34,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14035,7 +13690,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 27,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14063,7 +13717,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14091,7 +13744,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14119,7 +13771,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 25,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14147,7 +13798,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 31,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14175,7 +13825,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 29,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14203,7 +13852,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14231,7 +13879,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 25,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14259,7 +13906,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14287,7 +13933,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14315,7 +13960,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 64,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14343,7 +13987,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 28,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14371,7 +14014,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 48,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14399,7 +14041,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 37,
       "is_favorite": false,
       "notes": "Cross-platform duplicate (ID: 1, found in: DSS, DeepAlert)",
       "contact_telephone": "",
@@ -14427,7 +14068,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 31,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14455,7 +14095,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 25,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14483,7 +14122,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 41,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14511,7 +14149,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 32,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14539,7 +14176,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 29,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",
@@ -14567,7 +14203,6 @@ export const initialSeedData = {
     {
       "physical_address": "",
       "client_company": "",
-      "channel_count": 64,
       "is_favorite": false,
       "notes": "",
       "contact_telephone": "",

@@ -517,6 +517,7 @@ export const base44 = {
           if (full_name !== undefined) payload.full_name = full_name;
           if (role) payload.role = role;
           if (status) payload.status = status;
+          // Send plain password to backend for hashing
           if (password && password.trim().length > 0) {
             payload.password = password.trim();
           }
@@ -542,6 +543,7 @@ export const base44 = {
           const error = await res.json();
           throw { status: res.status, message: error.error || 'Failed to update user' };
         } catch (e) {
+          if (e?.status && e?.message) throw e;
           console.warn('Backend auth update failed, falling back to local:', e);
         }
       }
@@ -575,6 +577,7 @@ export const base44 = {
           const error = await res.json();
           throw { status: res.status, message: error.error || 'Failed to delete user' };
         } catch (e) {
+          if (e?.status && e?.message) throw e;
           console.warn('Backend auth delete failed, falling back to local:', e);
         }
       }
@@ -599,6 +602,72 @@ export const base44 = {
       }
 
       return result;
+    },
+
+    async approveUser(id) {
+      const apiUrl = getApiUrl();
+      if (apiUrl) {
+        try {
+          const res = await fetch(`${apiUrl}/auth/users/${id}/approve`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' }
+          });
+          if (res.ok) {
+            const updated = await res.json();
+            const items = db['User'] || [];
+            const idx = items.findIndex((item) => item.id === id || String(item.id) === String(id));
+            if (idx !== -1) {
+              items[idx] = updated;
+            } else {
+              items.unshift(updated);
+            }
+            db['User'] = items;
+            saveStore(db);
+            return updated;
+          }
+          const error = await res.json();
+          throw { status: res.status, message: error.error || 'Failed to approve user' };
+        } catch (e) {
+          if (e?.status && e?.message) throw e;
+          console.warn('Backend auth approve failed, falling back to local:', e);
+        }
+      }
+
+      // Fallback to local storage
+      return await entitiesProxy.User.update(id, { status: 'active' });
+    },
+
+    async rejectUser(id) {
+      const apiUrl = getApiUrl();
+      if (apiUrl) {
+        try {
+          const res = await fetch(`${apiUrl}/auth/users/${id}/reject`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' }
+          });
+          if (res.ok) {
+            const updated = await res.json();
+            const items = db['User'] || [];
+            const idx = items.findIndex((item) => item.id === id || String(item.id) === String(id));
+            if (idx !== -1) {
+              items[idx] = updated;
+            } else {
+              items.unshift(updated);
+            }
+            db['User'] = items;
+            saveStore(db);
+            return updated;
+          }
+          const error = await res.json();
+          throw { status: res.status, message: error.error || 'Failed to reject user' };
+        } catch (e) {
+          if (e?.status && e?.message) throw e;
+          console.warn('Backend auth reject failed, falling back to local:', e);
+        }
+      }
+
+      // Fallback to local storage
+      return await entitiesProxy.User.update(id, { status: 'rejected' });
     },
 
     async register({ email, password, full_name }) {

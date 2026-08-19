@@ -9,6 +9,16 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({ origin: '*' }));
 app.use(express.json({ limit: '50mb' }));
 
+// Request logging middleware
+app.use((req, res, next) => {
+  const timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] ${req.method} ${req.path}`);
+  if (req.body && Object.keys(req.body).length > 0) {
+    console.log(`  Body: ${JSON.stringify(req.body).substring(0, 200)}...`);
+  }
+  next();
+});
+
 function sendError(res, err) {
   const status = err?.statusCode || err?.status || 500;
   const message = err?.message || 'Unexpected server error.';
@@ -176,6 +186,29 @@ app.delete('/api/auth/users/:id', async (req, res) => {
     const { id } = req.params;
     const result = await deleteEntity('User', id);
     res.json(result);
+  } catch (err) {
+    sendError(res, err);
+  }
+});
+
+// User Approval/Rejection Endpoints
+app.put('/api/auth/users/:id/approve', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updated = await updateEntity('User', id, { status: 'active' });
+    const { password_hash, ...safeUser } = updated;
+    res.json(safeUser);
+  } catch (err) {
+    sendError(res, err);
+  }
+});
+
+app.put('/api/auth/users/:id/reject', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updated = await updateEntity('User', id, { status: 'rejected' });
+    const { password_hash, ...safeUser } = updated;
+    res.json(safeUser);
   } catch (err) {
     sendError(res, err);
   }
