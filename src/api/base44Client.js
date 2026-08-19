@@ -449,6 +449,31 @@ export const base44 = {
       if (emailLower === SUPER_ADMIN_EMAIL) {
         throw { status: 400, message: 'This email is reserved for the Super Admin.' };
       }
+
+      const apiUrl = getApiUrl();
+      if (apiUrl) {
+        try {
+          const res = await fetch(`${apiUrl}/auth/users`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: emailLower, password, full_name, role, status })
+          });
+          if (res.ok) {
+            const created = await res.json();
+            if (!db['User']) db['User'] = [];
+            db['User'] = db['User'].filter((item) => item.id !== created.id);
+            db['User'].unshift(created);
+            saveStore(db);
+            return created;
+          }
+          const error = await res.json();
+          throw { status: res.status, message: error.error || 'Failed to create user' };
+        } catch (e) {
+          console.warn('Backend auth create failed, falling back to local:', e);
+        }
+      }
+
+      // Fallback to local storage
       let users = [];
       try {
         users = await entitiesProxy.User.list();
@@ -484,6 +509,44 @@ export const base44 = {
     },
 
     async updateUser(id, { email, full_name, role, status, password }) {
+      const apiUrl = getApiUrl();
+      if (apiUrl) {
+        try {
+          const payload = {};
+          if (email) payload.email = email.trim().toLowerCase();
+          if (full_name !== undefined) payload.full_name = full_name;
+          if (role) payload.role = role;
+          if (status) payload.status = status;
+          if (password && password.trim().length > 0) {
+            payload.password = password.trim();
+          }
+
+          const res = await fetch(`${apiUrl}/auth/users/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (res.ok) {
+            const updated = await res.json();
+            const items = db['User'] || [];
+            const idx = items.findIndex((item) => item.id === id || String(item.id) === String(id));
+            if (idx !== -1) {
+              items[idx] = updated;
+            } else {
+              items.unshift(updated);
+            }
+            db['User'] = items;
+            saveStore(db);
+            return updated;
+          }
+          const error = await res.json();
+          throw { status: res.status, message: error.error || 'Failed to update user' };
+        } catch (e) {
+          console.warn('Backend auth update failed, falling back to local:', e);
+        }
+      }
+
+      // Fallback to local storage
       const payload = {};
       if (email) payload.email = email.trim().toLowerCase();
       if (full_name !== undefined) payload.full_name = full_name;
@@ -496,6 +559,27 @@ export const base44 = {
     },
 
     async deleteUser(id) {
+      const apiUrl = getApiUrl();
+      if (apiUrl) {
+        try {
+          const res = await fetch(`${apiUrl}/auth/users/${id}`, {
+            method: 'DELETE'
+          });
+          if (res.ok) {
+            const result = await res.json();
+            const items = db['User'] || [];
+            db['User'] = items.filter((item) => item.id !== id && String(item.id) !== String(id));
+            saveStore(db);
+            return result;
+          }
+          const error = await res.json();
+          throw { status: res.status, message: error.error || 'Failed to delete user' };
+        } catch (e) {
+          console.warn('Backend auth delete failed, falling back to local:', e);
+        }
+      }
+
+      // Fallback to local storage
       // Prevent deletion of super admin
       let user = null;
       try {

@@ -14775,6 +14775,16 @@ export const initialSeedData = {
   ],
   "User": [
     {
+      "id": "usr_super_admin",
+      "email": "slebeloane@stallion.co.za",
+      "full_name": "Siyabonga Lebeloane",
+      "role": "super_admin",
+      "status": "active",
+      "password_hash": "5063d4f4a3c6d2336b0ce8197542a9012e24c985c8c03dce804e66f8fbf411ed",
+      "created_date": "2026-08-17T04:15:03.732Z",
+      "updated_date": "2026-08-17T04:15:03.732Z"
+    },
+    {
       "id": "usr_admin",
       "email": "admin@cctvmaintenance.com",
       "full_name": "Administrator",

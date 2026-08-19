@@ -107,6 +107,80 @@ app.delete('/api/entities/:entity/:id', async (req, res) => {
   }
 });
 
+// Auth Endpoints for User Operations
+app.post('/api/auth/users', async (req, res) => {
+  try {
+    const { email, password, full_name, role = 'readonly', status = 'active' } = req.body;
+    
+    if (!email || !password || !full_name) {
+      return res.status(400).json({ error: 'Email, password, and full_name are required.' });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({ error: 'Password must be at least 6 characters.' });
+    }
+
+    const crypto = await import('crypto');
+    const hash = crypto.createHash('sha256').update(password).digest('hex');
+
+    const user = await saveEntity('User', {
+      email: email.trim().toLowerCase(),
+      full_name: full_name.trim(),
+      role,
+      status,
+      password_hash: hash
+    });
+
+    // Return user without password hash
+    const { password_hash, ...safeUser } = user;
+    res.status(201).json(safeUser);
+  } catch (err) {
+    sendError(res, err);
+  }
+});
+
+app.put('/api/auth/users/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { email, full_name, role, status, password } = req.body;
+
+    const existing = await getEntityById('User', id);
+    if (!existing) {
+      return res.status(404).json({ error: 'User not found.' });
+    }
+
+    const updateData = {};
+    if (email) updateData.email = email.trim().toLowerCase();
+    if (full_name) updateData.full_name = full_name.trim();
+    if (role) updateData.role = role;
+    if (status) updateData.status = status;
+    
+    if (password && password.trim().length > 0) {
+      if (password.length < 6) {
+        return res.status(400).json({ error: 'Password must be at least 6 characters.' });
+      }
+      const crypto = await import('crypto');
+      updateData.password_hash = crypto.createHash('sha256').update(password).digest('hex');
+    }
+
+    const updated = await updateEntity('User', id, updateData);
+    const { password_hash, ...safeUser } = updated;
+    res.json(safeUser);
+  } catch (err) {
+    sendError(res, err);
+  }
+});
+
+app.delete('/api/auth/users/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await deleteEntity('User', id);
+    res.json(result);
+  } catch (err) {
+    sendError(res, err);
+  }
+});
+
 // Auto Seed on Startup & Start Server
 seedDatabase().then(() => {
   app.listen(PORT, '0.0.0.0', () => {
