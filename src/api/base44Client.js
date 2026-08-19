@@ -68,6 +68,27 @@ const getApiUrl = () => {
   return DEFAULT_PROD_API_URL;
 };
 
+class ApiRequestError extends Error {
+  constructor(message, status) {
+    super(message);
+    this.name = 'ApiRequestError';
+    this.status = status;
+    this.isApiRequestError = true;
+  }
+}
+
+async function throwApiError(response, fallbackMessage) {
+  let message = fallbackMessage;
+  try {
+    const body = await response.json();
+    if (body?.error) message = body.error;
+    else if (body?.message) message = body.message;
+  } catch (e) {
+    // Ignore JSON parse failures and use fallback message.
+  }
+  throw new ApiRequestError(message, response.status);
+}
+
 // Entity Factory to emulate base44.entities.[EntityName]
 function createEntityHandler(entityName) {
   return {
@@ -135,8 +156,12 @@ function createEntityHandler(entityName) {
       if (apiUrl) {
         try {
           const res = await fetch(`${apiUrl}/entities/${entityName}/${id}`);
-          if (res.ok) return await res.json();
+          if (!res.ok) {
+            await throwApiError(res, `Failed to fetch ${entityName} record.`);
+          }
+          return await res.json();
         } catch (e) {
+          if (e?.isApiRequestError) throw e;
           console.warn(`Docker API fetch failed for ${entityName}.get, falling back:`, e);
         }
       }
@@ -158,15 +183,18 @@ function createEntityHandler(entityName) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
-          if (res.ok) {
-            const created = await res.json();
-            if (!db[entityName]) db[entityName] = [];
-            db[entityName] = db[entityName].filter((item) => item.id !== created.id);
-            db[entityName].unshift(created);
-            saveStore(db);
-            return created;
+          if (!res.ok) {
+            await throwApiError(res, `Failed to create ${entityName} record.`);
           }
+
+          const created = await res.json();
+          if (!db[entityName]) db[entityName] = [];
+          db[entityName] = db[entityName].filter((item) => item.id !== created.id);
+          db[entityName].unshift(created);
+          saveStore(db);
+          return created;
         } catch (e) {
+          if (e?.isApiRequestError) throw e;
           console.warn(`Docker API create failed for ${entityName}, falling back:`, e);
         }
       }
@@ -196,20 +224,23 @@ function createEntityHandler(entityName) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
-          if (res.ok) {
-            const updated = await res.json();
-            const items = db[entityName] || [];
-            const idx = items.findIndex((item) => item.id === id || String(item.id) === String(id));
-            if (idx !== -1) {
-              items[idx] = updated;
-            } else {
-              items.unshift(updated);
-            }
-            db[entityName] = items;
-            saveStore(db);
-            return updated;
+          if (!res.ok) {
+            await throwApiError(res, `Failed to update ${entityName} record.`);
           }
+
+          const updated = await res.json();
+          const items = db[entityName] || [];
+          const idx = items.findIndex((item) => item.id === id || String(item.id) === String(id));
+          if (idx !== -1) {
+            items[idx] = updated;
+          } else {
+            items.unshift(updated);
+          }
+          db[entityName] = items;
+          saveStore(db);
+          return updated;
         } catch (e) {
+          if (e?.isApiRequestError) throw e;
           console.warn(`Docker API update failed for ${entityName}, falling back:`, e);
         }
       }
@@ -283,13 +314,16 @@ function createEntityHandler(entityName) {
           const res = await fetch(`${apiUrl}/entities/${entityName}/${id}`, {
             method: 'DELETE'
           });
-          if (res.ok) {
-            const items = db[entityName] || [];
-            db[entityName] = items.filter((item) => item.id !== id && String(item.id) !== String(id));
-            saveStore(db);
-            return await res.json();
+          if (!res.ok) {
+            await throwApiError(res, `Failed to delete ${entityName} record.`);
           }
+
+          const items = db[entityName] || [];
+          db[entityName] = items.filter((item) => item.id !== id && String(item.id) !== String(id));
+          saveStore(db);
+          return await res.json();
         } catch (e) {
+          if (e?.isApiRequestError) throw e;
           console.warn(`Docker API delete failed for ${entityName}, falling back:`, e);
         }
       }
@@ -472,7 +506,15 @@ export const base44 = {
       if (user && (user.role === 'super_admin' || user.email === SUPER_ADMIN_EMAIL)) {
         throw { status: 403, message: 'The Super Admin account cannot be deleted.' };
       }
-      return await entitiesProxy.User.delete(id);
+      const result = await entitiesProxy.User.delete(id);
+
+      // If the deleted account is currently signed in, clear stale auth state.
+      const currentUser = getCurrentUser();
+      if (currentUser?.id && String(currentUser.id) === String(id)) {
+        setCurrentUser(null);
+      }
+
+      return result;
     },
 
     async register({ email, password, full_name }) {

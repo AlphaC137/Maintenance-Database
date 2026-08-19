@@ -3,6 +3,23 @@ import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 
+const USER_ENTITY = 'User';
+const SUPER_ADMIN_EMAIL = 'slebeloane@stallion.co.za';
+const VALID_USER_ROLES = new Set(['super_admin', 'admin', 'maintenance', 'readonly']);
+const VALID_USER_STATUSES = new Set(['active', 'pending', 'disabled', 'deactivated', 'rejected']);
+
+export class EntityError extends Error {
+  constructor(message, statusCode = 500) {
+    super(message);
+    this.name = 'EntityError';
+    this.statusCode = statusCode;
+  }
+}
+
+function normalizeEmail(email) {
+  return typeof email === 'string' ? email.trim().toLowerCase() : '';
+}
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -87,54 +104,113 @@ export function getEntityById(entityName, id) {
   });
 }
 
+async function normalizeAndValidateRecord(entityName, record, existingId) {
+  if (entityName !== USER_ENTITY) {
+    return record;
+  }
+
+  const normalized = { ...record };
+  const email = normalizeEmail(normalized.email);
+  if (!email) {
+    throw new EntityError('User email is required.', 400);
+  }
+  normalized.email = email;
+
+  if (!normalized.full_name || !String(normalized.full_name).trim()) {
+    normalized.full_name = email.split('@')[0] || email;
+  }
+
+  if (!normalized.password_hash || !String(normalized.password_hash).trim()) {
+    throw new EntityError('User password hash is required.', 400);
+  }
+
+  if (normalized.role && !VALID_USER_ROLES.has(normalized.role)) {
+    throw new EntityError('Invalid user role.', 400);
+  }
+
+  if (normalized.status && !VALID_USER_STATUSES.has(normalized.status)) {
+    throw new EntityError('Invalid user status.', 400);
+  }
+
+  const users = await getEntities(USER_ENTITY);
+  const duplicate = users.find((user) => {
+    const otherEmail = normalizeEmail(user.email);
+    const sameEmail = otherEmail === email;
+    const sameRecord = String(user.id) === String(existingId ?? normalized.id);
+    return sameEmail && !sameRecord;
+  });
+
+  if (duplicate) {
+    throw new EntityError(`An account with email ${email} already exists.`, 409);
+  }
+
+  return normalized;
+}
+
 export function saveEntity(entityName, record) {
   return new Promise((resolve, reject) => {
-    const now = new Date().toISOString();
-    const id = String(record.id || `${entityName.toLowerCase()}_${Math.random().toString(36).substring(2, 10)}`);
-    const full = {
-      created_date: now,
-      updated_date: now,
-      ...record,
-      id
-    };
+    (async () => {
+      const now = new Date().toISOString();
+      const id = String(record.id || `${entityName.toLowerCase()}_${Math.random().toString(36).substring(2, 10)}`);
+      const normalized = await normalizeAndValidateRecord(entityName, { ...record, id }, id);
+      const full = {
+        created_date: now,
+        updated_date: now,
+        ...normalized,
+        id
+      };
 
-    db.run(
-      `INSERT INTO entities (entity, id, data, created_date, updated_date)
-       VALUES (?, ?, ?, ?, ?)
-       ON CONFLICT(entity, id) DO UPDATE SET data = excluded.data, updated_date = excluded.updated_date`,
-      [entityName, id, JSON.stringify(full), full.created_date, full.updated_date],
-      (err) => {
-        if (err) return reject(err);
-        resolve(full);
-      }
-    );
+      db.run(
+        `INSERT INTO entities (entity, id, data, created_date, updated_date)
+         VALUES (?, ?, ?, ?, ?)
+         ON CONFLICT(entity, id) DO UPDATE SET data = excluded.data, updated_date = excluded.updated_date`,
+        [entityName, id, JSON.stringify(full), full.created_date, full.updated_date],
+        (err) => {
+          if (err) return reject(err);
+          resolve(full);
+        }
+      );
+    })().catch(reject);
   });
 }
 
 export function updateEntity(entityName, id, payload) {
-  return getEntityById(entityName, id).then((existing) => {
+  return getEntityById(entityName, id).then(async (existing) => {
     if (!existing) {
-      throw new Error(`Record with id ${id} not found in ${entityName}`);
+      throw new EntityError(`Record with id ${id} not found in ${entityName}`, 404);
     }
     const updated = {
       ...existing,
       ...payload,
       updated_date: new Date().toISOString()
     };
-    return saveEntity(entityName, updated);
+    const normalized = await normalizeAndValidateRecord(entityName, updated, existing.id);
+    return saveEntity(entityName, normalized);
   });
 }
 
 export function deleteEntity(entityName, id) {
   return new Promise((resolve, reject) => {
-    db.run(
-      `DELETE FROM entities WHERE entity = ? AND id = ?`,
-      [entityName, String(id)],
-      (err) => {
-        if (err) return reject(err);
-        resolve({ success: true, id });
+    (async () => {
+      if (entityName === USER_ENTITY) {
+        const user = await getEntityById(entityName, id);
+        if (user && (user.role === 'super_admin' || normalizeEmail(user.email) === SUPER_ADMIN_EMAIL)) {
+          throw new EntityError('The Super Admin account cannot be deleted.', 403);
+        }
       }
-    );
+
+      db.run(
+        `DELETE FROM entities WHERE entity = ? AND id = ?`,
+        [entityName, String(id)],
+        function onDelete(err) {
+          if (err) return reject(err);
+          if (this.changes === 0) {
+            return reject(new EntityError(`Record with id ${id} not found in ${entityName}`, 404));
+          }
+          resolve({ success: true, id });
+        }
+      );
+    })().catch(reject);
   });
 }
 
