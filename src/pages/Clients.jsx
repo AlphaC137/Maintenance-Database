@@ -136,7 +136,7 @@ export default function Clients() {
         </div>
       </div>
 
-      <ClientFormDialog open={dialog} onOpenChange={setDialog} client={editing} onSaved={load} />
+      <ClientFormDialog open={dialog} onOpenChange={setDialog} client={editing} onSaved={load} sites={sites} />
     </div>
   );
 }

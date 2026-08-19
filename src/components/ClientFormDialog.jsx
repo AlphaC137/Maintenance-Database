@@ -1,19 +1,40 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { base44 } from "@/api/base44Client";
 import { logAudit } from "@/lib/audit";
 import { canEdit } from "@/lib/roles";
 import { useAuth } from "@/lib/AuthContext";
 
-export default function ClientFormDialog({ open, onOpenChange, client, onSaved }) {
+export default function ClientFormDialog({ open, onOpenChange, client, onSaved, sites }) {
   const { user } = useAuth();
   const editable = canEdit(user);
   const [form, setForm] = useState({});
   const [saving, setSaving] = useState(false);
+  const [companySearch, setCompanySearch] = useState("");
+
+  // Get unique company names from sites
+  const uniqueCompanies = useMemo(() => {
+    const companies = new Set();
+    sites?.forEach((site) => {
+      if (site.client_company) {
+        companies.add(site.client_company);
+      }
+    });
+    return Array.from(companies).sort();
+  }, [sites]);
+
+  // Filter companies based on search
+  const filteredCompanies = useMemo(() => {
+    if (!companySearch) return uniqueCompanies;
+    return uniqueCompanies.filter((c) =>
+      c.toLowerCase().includes(companySearch.toLowerCase())
+    );
+  }, [uniqueCompanies, companySearch]);
 
   useEffect(() => {
     if (open) {
@@ -28,6 +49,7 @@ export default function ClientFormDialog({ open, onOpenChange, client, onSaved }
         site_manager_name: client?.site_manager_name || "",
         notes: client?.notes || "",
       });
+      setCompanySearch("");
     }
   }, [open, client]);
 
@@ -35,6 +57,14 @@ export default function ClientFormDialog({ open, onOpenChange, client, onSaved }
 
   const submit = async (e) => {
     e.preventDefault();
+    
+    // Validate that at least one site is associated with this company
+    const associatedSites = sites?.filter((s) => s.client_company === form.company_name);
+    if (!client?.id && (!form.company_name || associatedSites.length === 0)) {
+      alert("Please select a company name that has at least one associated site.");
+      return;
+    }
+    
     setSaving(true);
     try {
       let saved;
@@ -61,7 +91,41 @@ export default function ClientFormDialog({ open, onOpenChange, client, onSaved }
         <form onSubmit={submit} className="space-y-4">
           <div className="space-y-1.5">
             <Label>Company name</Label>
-            <Input value={form.company_name || ""} onChange={(e) => set("company_name", e.target.value)} required disabled={!editable} />
+            <Select
+              value={form.company_name || ""}
+              onValueChange={(v) => set("company_name", v)}
+              disabled={!editable}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select a company from sites" />
+              </SelectTrigger>
+              <SelectContent>
+                <div className="p-2">
+                  <Input
+                    placeholder="Search companies..."
+                    value={companySearch}
+                    onChange={(e) => setCompanySearch(e.target.value)}
+                    className="mb-2"
+                  />
+                </div>
+                {filteredCompanies.length === 0 ? (
+                  <div className="px-2 py-4 text-sm text-muted-foreground">
+                    {companySearch ? "No matching companies" : "No companies found in sites"}
+                  </div>
+                ) : (
+                  filteredCompanies.map((company) => (
+                    <SelectItem key={company} value={company}>
+                      {company}
+                    </SelectItem>
+                  ))
+                )}
+              </SelectContent>
+            </Select>
+            {form.company_name && (
+              <p className="text-xs text-muted-foreground">
+                {sites?.filter((s) => s.client_company === form.company_name).length} site(s) associated
+              </p>
+            )}
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="space-y-1.5">
