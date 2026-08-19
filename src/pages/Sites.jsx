@@ -1,15 +1,16 @@
 import { useState, useMemo, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { Plus, ChevronLeft, ChevronRight, Search, ArrowUpDown, Archive, Star, FileSpreadsheet, AlertTriangle } from "lucide-react";
+import { Plus, ChevronLeft, ChevronRight, Search, ArrowUpDown, Archive, Star, FileSpreadsheet, AlertTriangle, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
 import StatusBadge from "@/components/StatusBadge";
 import SiteFormDialog from "@/components/SiteFormDialog";
 import CsvImportExportModal from "@/components/CsvImportExportModal";
-import { canEdit } from "@/lib/roles";
+import { canEdit, canDelete } from "@/lib/roles";
 import { useAuth } from "@/lib/AuthContext";
 import { useSites, usePlatforms, useMutateSite } from "@/hooks/useEntities";
+import { base44 } from "@/api/base44Client";
 
 const PAGE_SIZE = 15;
 const STATUSES = ["Active", "Offline", "Archived"];
@@ -97,6 +98,33 @@ export default function Sites() {
     const ids = Array.from(selected);
     await bulkUpdateSites.mutateAsync({ ids, data: { platform_id: platformId } });
     setSelected(new Set());
+  };
+
+  const deleteSite = async (siteId, siteName) => {
+    if (!confirm(`Permanently delete "${siteName}"? This action cannot be undone.`)) {
+      return;
+    }
+
+    try {
+      await base44.entities.Site.delete(siteId);
+      reloadSites();
+    } catch (err) {
+      console.error("Failed to delete site:", err);
+      alert("Failed to delete site: " + (err.message || "Unknown error"));
+    }
+  };
+
+  const formatDate = (dateStr) => {
+    if (!dateStr) return "—";
+    try {
+      return new Date(dateStr).toLocaleDateString('en-ZA', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+    } catch {
+      return "—";
+    }
   };
 
   return (
@@ -191,11 +219,13 @@ export default function Sites() {
                 <Th label="Channels" k="channel_count" sort={sort} onSort={toggleSort} />
                 <Th label="Province" k="province" sort={sort} onSort={toggleSort} />
                 <Th label="Client" k="client_company" sort={sort} onSort={toggleSort} />
+                <Th label="Added" k="created_date" sort={sort} onSort={toggleSort} />
+                <th className="w-10 px-3 py-2.5" />
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
               {loading ? Array.from({ length: 8 }).map((_, i) => (
-                <tr key={i}><td colSpan={9} className="px-3 py-3"><div className="h-5 animate-pulse rounded bg-muted" /></td></tr>
+                <tr key={i}><td colSpan={11} className="px-3 py-3"><div className="h-5 animate-pulse rounded bg-muted" /></td></tr>
               )) : pageRows.map((s) => {
                 const isOverdue = s.next_service_due && s.next_service_due < new Date().toISOString().split('T')[0];
                 return (
@@ -222,6 +252,19 @@ export default function Sites() {
                     <td className="px-3 py-3">{s.channel_count ?? "—"}</td>
                     <td className="px-3 py-3 text-muted-foreground">{s.province || "—"}</td>
                     <td className="px-3 py-3 text-muted-foreground">{s.client_company || "—"}</td>
+                    <td className="px-3 py-3 text-muted-foreground text-xs">{formatDate(s.created_date)}</td>
+                    <td className="px-3 py-3" onClick={(e) => { e.stopPropagation(); }}>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="h-7 w-7 p-0 text-muted-foreground hover:text-destructive"
+                        onClick={() => deleteSite(s.id, s.site_name)}
+                        disabled={!canDelete(user)}
+                        title="Permanently delete site"
+                      >
+                        <Trash2 className="h-3.5 w-3.5" />
+                      </Button>
+                    </td>
                   </tr>
                 );
               })}

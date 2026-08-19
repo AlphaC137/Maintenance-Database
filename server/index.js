@@ -181,6 +181,17 @@ app.delete('/api/auth/users/:id', async (req, res) => {
   }
 });
 
+// Site Management Endpoints
+app.delete('/api/sites/:id/permanent', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await deleteEntity('Site', id);
+    res.json(result);
+  } catch (err) {
+    sendError(res, err);
+  }
+});
+
 // Auto Seed on Startup & Start Server
 seedDatabase().then(() => {
   app.listen(PORT, '0.0.0.0', () => {
