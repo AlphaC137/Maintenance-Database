@@ -116,7 +116,7 @@ export default function SiteDetail() {
 
         <TabsContent value="general"><GeneralTab site={site} platform={platform} onEdit={() => setEditSite(true)} canEdit={canEdit(user)} /></TabsContent>
         <TabsContent value="cameras">
-          <CamerasTab cameras={cameras} onAdd={() => { setEditingCamera(null); setCameraDialog(true); }} onEdit={(c) => { setEditingCamera(c); setCameraDialog(true); }} onDelete={deleteCamera} canEdit={canEdit(user)} canDelete={canDelete(user)} fallbackCount={site.channel_count} />
+          <CamerasTab cameras={cameras} onAdd={() => { setEditingCamera(null); setCameraDialog(true); }} onEdit={(c) => { setEditingCamera(c); setCameraDialog(true); }} onDelete={deleteCamera} canEdit={canEdit(user)} canDelete={canDelete(user)} />
         </TabsContent>
         <TabsContent value="client"><ClientTab site={site} onEdit={() => setEditSite(true)} canEdit={canEdit(user)} /></TabsContent>
         <TabsContent value="security"><InfoTab siteId={id} siteName={site.site_name} record={security} entityName="SecurityInfo" fields={SECURITY_FIELDS} onLoad={load} setLocal={setSecurity} canEdit={canEdit(user)} /></TabsContent>
@@ -285,14 +285,14 @@ function InfoTab({ siteId, siteName, record, entityName, fields, onLoad, setLoca
   );
 }
 
-function CamerasTab({ cameras, onAdd, onEdit, onDelete, canEdit, canDelete, fallbackCount }) {
+function CamerasTab({ cameras, onAdd, onEdit, onDelete, canEdit, canDelete }) {
   const [q, setQ] = useState("");
   const filtered = cameras.filter((c) => `${c.camera_name} ${c.camera_number} ${c.camera_type} ${c.location}`.toLowerCase().includes(q.toLowerCase()));
   return (
     <Card>
       <CardHeader
         title={`Cameras (${cameras.length})`}
-        subtitle={cameras.length === 0 && fallbackCount ? `Legacy count: ${fallbackCount}` : `Total: ${cameras.length}`}
+        subtitle={`Total: ${cameras.length}`}
         action={canEdit && <Button size="sm" onClick={onAdd}><Plus className="mr-1.5 h-3.5 w-3.5" /> Add Camera</Button>}
       />
       <div className="relative mb-3 max-w-xs">
@@ -300,11 +300,7 @@ function CamerasTab({ cameras, onAdd, onEdit, onDelete, canEdit, canDelete, fall
         <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search cameras…" className="pl-9" />
       </div>
       {filtered.length === 0 ? (
-        <p className="py-8 text-center text-sm text-muted-foreground">
-          {cameras.length === 0 && fallbackCount 
-            ? `No individual camera records found. The site has a legacy count of ${fallbackCount} cameras. Add individual cameras to track them separately.`
-            : "No cameras found."}
-        </p>
+        <p className="py-8 text-center text-sm text-muted-foreground">No cameras found.</p>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
