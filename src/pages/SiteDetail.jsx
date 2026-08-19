@@ -300,7 +300,11 @@ function CamerasTab({ cameras, onAdd, onEdit, onDelete, canEdit, canDelete, fall
         <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search cameras…" className="pl-9" />
       </div>
       {filtered.length === 0 ? (
-        <p className="py-8 text-center text-sm text-muted-foreground">No cameras found.</p>
+        <p className="py-8 text-center text-sm text-muted-foreground">
+          {cameras.length === 0 && fallbackCount 
+            ? `No individual camera records found. The site has a legacy count of ${fallbackCount} cameras. Add individual cameras to track them separately.`
+            : "No cameras found."}
+        </p>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -311,6 +315,7 @@ function CamerasTab({ cameras, onAdd, onEdit, onDelete, canEdit, canDelete, fall
                 <th className="pb-2 font-medium">Type</th>
                 <th className="pb-2 font-medium">Status</th>
                 <th className="pb-2 font-medium">Location</th>
+                <th className="pb-2 font-medium">View</th>
                 {canEdit && <th className="pb-2"></th>}
               </tr>
             </thead>
@@ -322,6 +327,13 @@ function CamerasTab({ cameras, onAdd, onEdit, onDelete, canEdit, canDelete, fall
                   <td className="py-2.5 text-muted-foreground">{c.camera_type || "—"}</td>
                   <td className="py-2.5"><StatusBadge status={c.camera_status} /></td>
                   <td className="py-2.5 text-muted-foreground">{c.location || "—"}</td>
+                  <td className="py-2.5">
+                    {c.camera_view_url ? (
+                      <img src={c.camera_view_url} alt="Camera view" className="h-12 w-16 object-cover rounded border" />
+                    ) : (
+                      <span className="text-muted-foreground text-xs">No image</span>
+                    )}
+                  </td>
                   {canEdit && (
                     <td className="py-2.5">
                       <div className="flex justify-end gap-1">

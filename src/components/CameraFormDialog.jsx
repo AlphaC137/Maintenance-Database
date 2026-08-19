@@ -9,6 +9,7 @@ import { base44 } from "@/api/base44Client";
 import { logAudit } from "@/lib/audit";
 import { canEdit } from "@/lib/roles";
 import { useAuth } from "@/lib/AuthContext";
+import { Upload, X } from "lucide-react";
 
 const CAMERA_TYPES = ["Dome", "Bullet", "PTZ", "Covert", "ANPR", "Box", "Other"];
 const CAMERA_STATUSES = ["Active", "Offline", "Faulty", "Maintenance"];
@@ -16,8 +17,10 @@ const CAMERA_STATUSES = ["Active", "Offline", "Faulty", "Maintenance"];
 export default function CameraFormDialog({ open, onOpenChange, siteId, siteName, camera, onSaved }) {
   const { user } = useAuth();
   const editable = canEdit(user);
-  const [form, setForm] = useState({ camera_name: "", camera_number: "", camera_type: "Dome", camera_status: "Active", location: "", notes: "" });
+  const [form, setForm] = useState({ camera_name: "", camera_number: "", camera_type: "Dome", camera_status: "Active", location: "", notes: "", camera_view_url: "" });
   const [saving, setSaving] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [imagePreview, setImagePreview] = useState("");
 
   useEffect(() => {
     if (open) {
@@ -27,12 +30,36 @@ export default function CameraFormDialog({ open, onOpenChange, siteId, siteName,
         camera_type: camera?.camera_type || "Dome",
         camera_status: camera?.camera_status || "Active",
         location: camera?.location || "",
-        notes: camera?.notes || ""
+        notes: camera?.notes || "",
+        camera_view_url: camera?.camera_view_url || ""
       });
+      setImagePreview(camera?.camera_view_url || "");
     }
   }, [open, camera]);
 
   const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingImage(true);
+    try {
+      const { file_url } = await base44.integrations.Core.UploadFile({ file });
+      setForm((f) => ({ ...f, camera_view_url: file_url }));
+      setImagePreview(file_url);
+    } catch (err) {
+      console.error("Failed to upload image:", err);
+      alert("Failed to upload image");
+    } finally {
+      setUploadingImage(false);
+      e.target.value = "";
+    }
+  };
+
+  const removeImage = () => {
+    setForm((f) => ({ ...f, camera_view_url: "" }));
+    setImagePreview("");
+  };
 
   const submit = async (e) => {
     e.preventDefault();
@@ -94,6 +121,39 @@ export default function CameraFormDialog({ open, onOpenChange, siteId, siteName,
           <div className="space-y-1.5">
             <Label>Notes</Label>
             <Textarea value={form.notes} onChange={(e) => set("notes", e.target.value)} rows={2} disabled={!editable} />
+          </div>
+          <div className="space-y-1.5">
+            <Label>Camera View Image (Optional)</Label>
+            {imagePreview ? (
+              <div className="relative inline-block">
+                <img src={imagePreview} alt="Camera view" className="h-32 w-48 object-cover rounded-lg border" />
+                {editable && (
+                  <button
+                    type="button"
+                    onClick={removeImage}
+                    className="absolute -top-2 -right-2 rounded-full bg-destructive p-1 text-destructive-foreground hover:bg-destructive/90"
+                  >
+                    <X className="h-3 w-3" />
+                  </button>
+                )}
+              </div>
+            ) : (
+              <label className="flex cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-border p-4 hover:bg-accent/50">
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleImageUpload}
+                  disabled={!editable || uploadingImage}
+                />
+                <div className="text-center">
+                  <Upload className="mx-auto h-6 w-6 text-muted-foreground" />
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    {uploadingImage ? "Uploading..." : "Click to upload camera view"}
+                  </p>
+                </div>
+              </label>
+            )}
           </div>
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>Cancel</Button>
