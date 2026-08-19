@@ -41,7 +41,6 @@ export default function SiteFormDialog({ open, onOpenChange, platforms, site, on
         gps_coordinates: site?.gps_coordinates || "",
         province: site?.province || "",
         region: site?.region || "",
-        channel_count: site?.channel_count ?? "",
         notes: site?.notes || "",
         sop_notes: site?.sop_notes || "",
         last_service_date: site?.last_service_date || "",
@@ -59,7 +58,7 @@ export default function SiteFormDialog({ open, onOpenChange, platforms, site, on
     setSaving(true);
     try {
       const tags = tagsInput.split(",").map((t) => t.trim()).filter(Boolean);
-      const payload = { ...form, tags, channel_count: form.channel_count === "" ? null : Number(form.channel_count) };
+      const payload = { ...form, tags };
       let saved;
       if (site?.id) {
         saved = await base44.entities.Site.update(site.id, payload);
@@ -94,7 +93,6 @@ export default function SiteFormDialog({ open, onOpenChange, platforms, site, on
                   secondary_contact: data.secondary_contact || f.secondary_contact,
                   after_hours_contact: data.after_hours_contact || f.after_hours_contact,
                   site_manager: data.site_manager || f.site_manager,
-                  channel_count: data.channel_count ?? f.channel_count,
                   monitoring_schedule: data.monitoring_schedule || f.monitoring_schedule,
                   sop_notes: data.sop_notes || f.sop_notes,
                 }));
@@ -191,10 +189,6 @@ export default function SiteFormDialog({ open, onOpenChange, platforms, site, on
             <div className="space-y-1.5">
               <Label>GPS coordinates</Label>
               <Input value={form.gps_coordinates || ""} onChange={(e) => set("gps_coordinates", e.target.value)} disabled={!editable} />
-            </div>
-            <div className="space-y-1.5">
-              <Label>Channel count (legacy)</Label>
-              <Input type="number" value={form.channel_count ?? ""} onChange={(e) => set("channel_count", e.target.value)} disabled={!editable} />
             </div>
             <div className="space-y-1.5 sm:col-span-2">
               <Label>Tags (comma separated)</Label>

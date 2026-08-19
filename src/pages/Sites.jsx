@@ -216,7 +216,6 @@ export default function Sites() {
                 <Th label="Code" k="site_code" sort={sort} onSort={toggleSort} />
                 <Th label="Platform" k="platform_id" sort={sort} onSort={toggleSort} />
                 <Th label="Status" k="site_status" sort={sort} onSort={toggleSort} />
-                <Th label="Channels" k="channel_count" sort={sort} onSort={toggleSort} />
                 <Th label="Province" k="province" sort={sort} onSort={toggleSort} />
                 <Th label="Client" k="client_company" sort={sort} onSort={toggleSort} />
                 <Th label="Added" k="created_date" sort={sort} onSort={toggleSort} />
@@ -249,7 +248,6 @@ export default function Sites() {
                     <td className="px-3 py-3 text-muted-foreground">{s.site_code || "—"}</td>
                     <td className="px-3 py-3 text-muted-foreground">{platformName(s.platform_id)}</td>
                     <td className="px-3 py-3"><StatusBadge status={s.site_status} /></td>
-                    <td className="px-3 py-3">{s.channel_count ?? "—"}</td>
                     <td className="px-3 py-3 text-muted-foreground">{s.province || "—"}</td>
                     <td className="px-3 py-3 text-muted-foreground">{s.client_company || "—"}</td>
                     <td className="px-3 py-3 text-muted-foreground text-xs">{formatDate(s.created_date)}</td>

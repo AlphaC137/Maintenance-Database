@@ -37,13 +37,16 @@ export default function Dashboard() {
   const platformColor = (id) => platforms.find((p) => p.id === id)?.color || CHART_COLORS[0];
 
   const totalSites = sites.length;
-  const totalCameras = sites.reduce((s, x) => s + (x.channel_count || 0), 0);
+  const totalCameras = cameras.length;
   const activeSites = sites.filter((s) => s.site_status === "Active").length;
   const offlineSites = sites.filter((s) => s.site_status === "Offline").length;
 
   const camerasByPlatform = platforms.map((p) => ({
     name: p.name,
-    cameras: sites.filter((s) => s.platform_id === p.id).reduce((sum, s) => sum + (s.channel_count || 0), 0)
+    cameras: cameras.filter((c) => {
+      const site = sites.find((s) => s.id === c.site_id);
+      return site?.platform_id === p.id;
+    }).length
   })).filter((x) => x.cameras > 0 || true);
 
   const sitesByPlatform = platforms.map((p) => ({

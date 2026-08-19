@@ -39,14 +39,14 @@ export default function Reports() {
 
   const buildRows = (key) => {
     if (key === "site") {
-      return data.sites.map((s) => ({ "Site Name": s.site_name, "Platform": pName(s.platform_id), "Number of Cameras": s.channel_count || 0, "Status": s.site_status, "Province": s.province || "", "Client": s.client_company || "" }));
+      return data.sites.map((s) => ({ "Site Name": s.site_name, "Platform": pName(s.platform_id), "Status": s.site_status, "Province": s.province || "", "Client": s.client_company || "" }));
     }
     if (key === "full") {
       return data.sites.map((s) => ({
         "Site Name": s.site_name, "Platform": pName(s.platform_id), "Status": s.site_status, "Client Company": s.client_company || "",
         "Primary Contact": s.primary_contact || "", "Telephone": s.contact_telephone || "", "Email": s.contact_email || "",
         "After Hours": s.after_hours_contact || "", "Site Manager": s.site_manager || "", "Address": s.physical_address || "",
-        "GPS": s.gps_coordinates || "", "Province": s.province || "", "Region": s.region || "", "Channel Count": s.channel_count || 0,
+        "GPS": s.gps_coordinates || "", "Province": s.province || "", "Region": s.region || "",
         "Tags": (s.tags || []).join("; "), "Notes": s.notes || ""
       }));
     }
@@ -60,8 +60,8 @@ export default function Reports() {
       const rows = [];
       data.platforms.forEach((p) => {
         const ss = data.sites.filter((s) => s.platform_id === p.id);
-        ss.forEach((s) => rows.push({ "Platform": p.name, "Site": s.site_name, "Status": s.site_status, "Cameras": s.channel_count || 0, "Client": s.client_company || "" }));
-        if (ss.length === 0) rows.push({ "Platform": p.name, "Site": "—", "Status": p.status, "Cameras": 0, "Client": "" });
+        ss.forEach((s) => rows.push({ "Platform": p.name, "Site": s.site_name, "Status": s.site_status, "Client": s.client_company || "" }));
+        if (ss.length === 0) rows.push({ "Platform": p.name, "Site": "—", "Status": p.status, "Client": "" });
       });
       return rows;
     }
@@ -72,7 +72,7 @@ export default function Reports() {
         (groups[c] = groups[c] || []).push(s);
       });
       const rows = [];
-      Object.entries(groups).forEach(([client, ss]) => ss.forEach((s) => rows.push({ "Client": client, "Site": s.site_name, "Platform": pName(s.platform_id), "Cameras": s.channel_count || 0, "Province": s.province || "" })));
+      Object.entries(groups).forEach(([client, ss]) => ss.forEach((s) => rows.push({ "Client": client, "Site": s.site_name, "Platform": pName(s.platform_id), "Province": s.province || "" })));
       return rows;
     }
     if (key === "audit") {

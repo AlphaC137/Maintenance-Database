@@ -115,7 +115,7 @@ export async function importDatabaseIdeaCsvs(fileMap, { onProgress } = {}) {
       client_company: clean(row.client_company), primary_contact: clean(row.primary_contact), secondary_contact: clean(row.secondary_contact),
       contact_telephone: clean(row.contact_telephone), contact_email: clean(row.contact_email), after_hours_contact: clean(row.after_hours_contact),
       site_manager: clean(row.site_manager), physical_address: clean(row.physical_address), gps_coordinates: clean(row.gps_coordinates),
-      province: clean(row.province), region: clean(row.region), channel_count: toNum(row.channel_count), tags: parseTags(row.tags),
+      province: clean(row.province), region: clean(row.region), tags: parseTags(row.tags),
       notes: clean(row.notes), sop_notes: clean(row.sop_notes), is_favorite: toBool(row.is_favorite)
     };
     await upsert("Site", sourceKey(row), { site_name: siteName }, payload);

@@ -121,7 +121,7 @@ export default function Settings() {
     exportCSV("cctv-sites-export.csv", sites.map((site) => ({
       "Site Name": site.site_name, Platform: platformName(site.platform_id), Status: site.site_status,
       Client: site.client_company || "", Province: site.province || "", Region: site.region || "",
-      Address: site.physical_address || "", GPS: site.gps_coordinates || "", "Channel Count": site.channel_count || 0,
+      Address: site.physical_address || "", GPS: site.gps_coordinates || "",
       Tags: (site.tags || []).join("; ")
     })));
   };

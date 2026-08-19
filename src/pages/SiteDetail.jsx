@@ -62,7 +62,7 @@ export default function SiteDetail() {
   if (loading) return <div className="space-y-3">{Array.from({ length: 6 }).map((_, i) => <div key={i} className="h-16 animate-pulse rounded-xl bg-muted" />)}</div>;
   if (!site) return <div className="py-20 text-center text-muted-foreground">Site not found.</div>;
 
-  const effectiveCameraCount = cameras.length > 0 ? cameras.length : (site.channel_count || 0);
+  const effectiveCameraCount = cameras.length;
 
   const deleteCamera = async (cam) => {
     if (!canDelete(user) || !confirm(`Delete camera "${cam.camera_name}"?`)) return;
@@ -154,7 +154,6 @@ function GeneralTab({ site, platform, onEdit, canEdit }) {
         <Field label="Monitoring schedule" value={site.monitoring_schedule} />
         <Field label="Province" value={site.province} />
         <Field label="Region" value={site.region} />
-        <Field label="Channel count (legacy)" value={site.channel_count} />
         <Field label="GPS coordinates" value={site.gps_coordinates} />
         <Field label="Last Service Date" value={site.last_service_date || "Not recorded"} />
         <Field 

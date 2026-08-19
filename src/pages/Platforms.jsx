@@ -41,8 +41,7 @@ export default function Platforms() {
 
   const stats = (pid) => {
     const ss = sites.filter((s) => s.platform_id === pid);
-    const cameras = ss.reduce((sum, s) => sum + (s.channel_count || 0), 0);
-    return { sites: ss.length, cameras };
+    return { sites: ss.length };
   };
 
   const childrenOf = (pid) => platforms.filter((p) => p.parent_platform_id === pid);
@@ -93,7 +92,6 @@ export default function Platforms() {
                 <p className="mt-3 line-clamp-2 text-sm text-muted-foreground min-h-[2.5rem]">{p.description || "No description"}</p>
                 <div className="mt-4 flex items-center gap-4 text-sm">
                   <span className="flex items-center gap-1.5"><MapPin className="h-4 w-4 text-muted-foreground" /> {s.sites} sites</span>
-                  <span className="flex items-center gap-1.5"><Cctv className="h-4 w-4 text-muted-foreground" /> {s.cameras} cameras</span>
                   <button onClick={() => setSelected(p)} className="ml-auto text-xs font-medium text-primary hover:underline">View sites</button>
                 </div>
                 {kids.length > 0 && (
@@ -106,7 +104,7 @@ export default function Platforms() {
                           <span className="flex h-7 w-7 items-center justify-center rounded-lg text-white" style={{ backgroundColor: c.color || "#6366f1" }}><Server className="h-3.5 w-3.5" /></span>
                           <div className="min-w-0 flex-1">
                             <p className="truncate text-sm font-medium">{c.name}</p>
-                            <p className="text-xs text-muted-foreground">{cs.sites} sites · {cs.cameras} cameras</p>
+                            <p className="text-xs text-muted-foreground">{cs.sites} sites</p>
                           </div>
                           <div className="flex gap-1">
                             {canEdit(user) && <button onClick={() => { setEditing(c); setDialog(true); }} className="rounded p-1 hover:bg-accent"><Pencil className="h-3.5 w-3.5" /></button>}
